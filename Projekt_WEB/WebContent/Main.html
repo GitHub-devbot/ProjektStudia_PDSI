@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl" lang="pl">
+
+    <head>
+        <meta charset="utf-8"/>
+        <title>MusiCurious - music platform</title>
+        <link rel="shortcut icon" href= "http://localhost/amelia/assets/musicurious.jpg">
+    </head>
+
+    <link rel="shortcut icon" href= "../assets/kalkulatorus.png">
+
+        <html>
+            <head>
+                <style>
+                    .myDiv {
+                        border: 5px outset lightpink;
+                        background-color: lightblue;
+                        text-align: center;
+                    }
+                </style>
+            </head>
+            <body>    
+
+                <div class="myDiv">
+                    <h2>{$wiadomosc1}</h2>
+                    <p>{$wiadomosc2}</p>
+                </div>    
+
+                <body>
+
+                    <!-- Wyszukiwanie -->
+                    <div id="banner-wrapper">
+                        <div id="banner" class="box container">
+                            <div class="row">
+                                <div class="col-7 col-12-medium">
+                                    <h2>Utwory muzyczne:</h2>
+
+                                    <p>    {if $msgs->isInfo()}
+                                        <ul>
+                                            {foreach $msgs->getMessages() as $msg}            
+                                                {$msg->text}            
+
+                                                <audio controls>
+                                                    <source src="{$url[$number]}" type="audio/mp3">
+                                                </audio>
+                                                {$number++}
+                                            {/foreach}
+                                        </ul>
+                                        {/if}</p>
+
+                                        <style>
+                                            .myDiv2 {
+                                                border: 5px outset lightpink;
+                                                background-color: lightblue;
+                                                text-align: center;
+                                            }
+                                        </style>                           
+
+                                        <div class="myDiv2">
+                                            <p><form action="hello" method="post">  
+                                                    <h4>Numer strony/Ilość pozycji</h4>        
+                                                    <input style="width: 90px" type="string" name="numer" value="{$page}" ><input style="width: 90px" type="string" name="wyswietl" value="{$wyswietl}"><br>
+                                                            <input type="submit" value="Przejdź">
+                                                                <br>
+                                                             <input type="submit" name="wstecz" value="Wstecz"> <input type="submit" name="dalej" value="Dalej">   
+                                                                </form></p>
+                                                                <h4>Dostępnych stron: {$size}</h4>
+                                                                <h4>Obecna strona: {$page}</h4>
+
+                                                                </div>
+                                                                </div>
+                                                                <div class="col-5 col-12-medium">                                        
+
+                                                                </div>
+                                                                </div>
+                                                                </div>
+                                                                </div>
+
+
+
+
+                                                                </body>
+
+                                                                </html>

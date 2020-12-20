@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        <title>MusiCurious - music platform</title>
+        <link rel="shortcut icon" href= "http://localhost/amelia/assets/musicurious.jpg">
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="/mysite/assets/css/main.css" />
+    </head>
+    <body class="is-preload homepage">
+
+    <head>
+        <style>
+            .myDiv {
+                border: 5px outset red;
+                background-color: lightblue;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>    
+
+        <div class="myDiv">
+            <h2>Zaloguj się:</h2>
+            <p><form action="login" method="post">
+                <h4> Nazwa użytkownika: </h4>
+                <input style="width: 200px" type="string" name="nazwa" ><br>    
+                <h4> Hasło: </h4>                        
+                <input style="margin: 0px auto; width: 200px;" type="password" name="haslo">   
+                <br>
+                <input type="submit" value="Zaloguj">
+            </form></p>
+
+        <form action="menu" method="post">
+            <input type="submit" value="Powrót">
+        </form>
+
+        <p>    {if $msgs->isInfo()}
+        <ul>
+            {foreach $msgs->getMessages() as $msg}            
+
+                <li>{$msg->text}</li>            
+
+            {/foreach}
+        </ul>
+        {/if}</p>
+    </div>       
+
+    <script src="/mysite/assets/js/jquery.min.js"></script>
+    <script src="/mysite/assets/js/jquery.dropotron.min.js"></script>
+    <script src="/mysite/assets/js/browser.min.js"></script>
+    <script src="/mysite/assets/js/breakpoints.min.js"></script>
+    <script src="/mysite/assets/js/util.js"></script>
+    <script src="/mysite/assets/js/main.js"></script>
+
+</body>
+</html>           
+
+
+
