@@ -18,24 +18,30 @@ public class Album implements Serializable {
 	@Column(name="album_id")
 	private int albumId;
 
+	@Column(name="added_by_id")
+	private int addedById;
+
 	@Lob
 	@Column(name="album_name")
 	private String albumName;
 
-	//bi-directional one-to-one association to Comment
-	@OneToOne
-	@JoinColumn(name="album_id")
-	private Comment comment;
-
 	public Album() {
 	}
 
-	public int getAlbumId() {
+	public Integer getAlbumId() {
 		return this.albumId;
 	}
 
 	public void setAlbumId(int albumId) {
 		this.albumId = albumId;
+	}
+
+	public int getAddedById() {
+		return this.addedById;
+	}
+
+	public void setAddedById(int addedById) {
+		this.addedById = addedById;
 	}
 
 	public String getAlbumName() {
@@ -44,14 +50,6 @@ public class Album implements Serializable {
 
 	public void setAlbumName(String albumName) {
 		this.albumName = albumName;
-	}
-
-	public Comment getComment() {
-		return this.comment;
-	}
-
-	public void setComment(Comment comment) {
-		this.comment = comment;
 	}
 
 }

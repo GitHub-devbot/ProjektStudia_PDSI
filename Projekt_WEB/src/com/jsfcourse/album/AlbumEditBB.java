@@ -1,4 +1,4 @@
-package com.jsfcourse.user;
+package com.jsfcourse.album;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -12,22 +12,22 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
 
-import jsf.projektDAO.userDAO;
-import jsf.projekt.User;
+import jsf.projektDAO.albumDAO;
+import jsf.projekt.Album;
 
 @Named
 @ViewScoped
-public class UserEditBB implements Serializable {
+public class AlbumEditBB implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private static final String PAGE_PERSON_LIST = "userList?faces-redirect=true";
+	private static final String PAGE_ALBUM_LIST = "albumList?faces-redirect=true";
 	private static final String PAGE_STAY_AT_THE_SAME = null;
 
-	private User user = new User();
-	private User loaded = null;
+	private Album album = new Album();
+	private Album loaded = null;
 
 	@EJB
-	userDAO userDAO;
+	albumDAO albumDAO;
 
 	@Inject
 	FacesContext context;
@@ -35,8 +35,8 @@ public class UserEditBB implements Serializable {
 	@Inject
 	Flash flash;
 
-	public User getUser() {
-		return user;
+	public Album getAlbum() {
+		return album;
 	}
 
 	public void onLoad() throws IOException {
@@ -45,11 +45,11 @@ public class UserEditBB implements Serializable {
 		// loaded = (Person) session.getAttribute("person");
 
 		// 2. load person passed through flash
-		loaded = (User) flash.get("user");
+		loaded = (Album) flash.get("album");
 
 		// cleaning: attribute received => delete it from session
 		if (loaded != null) {
-			user = loaded;
+			album = loaded;
 			// session.removeAttribute("person");
 		} else {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Bledne uzycie systemu", null));
@@ -68,12 +68,12 @@ public class UserEditBB implements Serializable {
 		}
 
 		try {
-			if (user.getUserId() == null) {
+			if (album.getAlbumId() == null) {
 				// new record
-				userDAO.create(user);
+				albumDAO.create(album);
 			} else {
 				// existing record
-				userDAO.merge(user);
+				albumDAO.merge(album);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -82,12 +82,7 @@ public class UserEditBB implements Serializable {
 			return PAGE_STAY_AT_THE_SAME;
 		}
 
-		return PAGE_PERSON_LIST;
+		return PAGE_ALBUM_LIST;
 	}
-	
-	
-	public String returnto() {
-		return PAGE_PERSON_LIST;	
-	}
-	
+
 }

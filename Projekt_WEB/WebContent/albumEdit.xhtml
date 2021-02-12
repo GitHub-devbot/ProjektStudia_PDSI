@@ -7,49 +7,50 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <f:metadata>
-	<f:viewParam name="p" value="#{userEditGETBB.user.userId}"
-		converterMessage="Nieoczekiwany błąd"/>
-	<f:event type="preRenderView" listener="#{userEditGETBB.onLoad()}" />
+    <f:viewAction action="#{albumEditBB.onLoad()}" />
 </f:metadata>
 
 <h:head>
 	<meta charset="utf-8"/>
 	<title>Projekt - PDSI</title>
 </h:head>
+
 <h:body style="background-color: #eee; margin: 0.5em;">
 
 	<p:panel toggleable="true" header="Edycja rekordu">
 
-		<h:form rendered="#{userEditBB.user != null}">
+		<h:form rendered="#{albumEditBB.album != null}">
 			<h:panelGrid columns="3" cellpadding="5">
 
-				<h:outputLabel for="p-userLogin" value="login:" />
-				<p:inputText id="p-userLogin" value="#{userEditGETBB.user.userLogin}"
-					required="true" requiredMessage="Podaj Login"
+				<h:outputLabel for="p-album_name" value="nazwa albumu" />
+				<p:inputText id="p-album_name" value="#{albumEditBB.album.albumName}"
+					required="true" requiredMessage="Podaj autora"
 					validatorMessage="co najwyżej 40 znaków">
 					<f:validateLength maximum="40" />
 				</p:inputText>
-				<p:message for="p-userLogin" display="icon"/>
+				<p:message for="p-album_name" display="icon"/>
 
-				<h:outputLabel for="p-userRole" value="rola:" />
-				<p:inputText id="p-surname" value="#{userEditGETBB.user.userRole}"
-					required="true" requiredMessage="podaj role"
+				<h:outputLabel for="p-added_by_id" value="album dodany przez" />
+				<p:inputText id="p-added_by_id" value="#{albumEditBB.album.addedById}"
+					required="true" requiredMessage="podaj przez kogo dodany album"
 					validatorMessage="co najwyżej 40 znaków">
 					<f:validateLength maximum="40" />
 				</p:inputText>
-				<p:message for="p-userRole" display="icon"/>
+				<p:message for="p-added_by_id" display="icon"/>
 
+				
+				
 			</h:panelGrid>
-
 			<p:messages id="msgs" />
 
-			<p:commandButton value="Zapisz" action="#{userEditGETBB.saveData()}"
+			<p:commandButton value="Zapisz" action="#{albumEditBB.saveData()}"
 				style="margin-right: 1em;" update="@form" />
 
-			<p:button value="Anuluj" outcome="userList" />
+			<p:button value="Anuluj" outcome="albumList" />
 		</h:form>
 
 	</p:panel>
 
 </h:body>
+
 </html>

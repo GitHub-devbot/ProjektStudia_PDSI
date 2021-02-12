@@ -16,8 +16,8 @@
 		style="margin-bottom: 1em;">
 		<h:form>
 			<h:panelGrid columns="2" cellpadding="5">
-				<h:outputLabel value="rola:" />
-				<p:inputText value="#{userListBB.userRole}" />
+				<h:outputLabel value="album_name:" />
+				<p:inputText value="#{albumListBB.albumName}" />
 				<p:commandButton value="Szukaj" update="form-table" />
 			</h:panelGrid>
 		</h:form>
@@ -34,37 +34,31 @@
 			action="#{songListBB.newSong()}" style="margin-bottom:1em;"/>	
 			
 		<p:commandButton value="Dodaj nowy album"
-			action="#{albumListBB.newAlbum()}" style="margin-bottom:1em;"/>			
+			action="#{albumListBB.newAlbum()}" style="margin-bottom:1em;"/>		
 
-		<p:dataTable value="#{userListBB.list}" var="p">
+		<p:dataTable value="#{albumListBB.list}" var="p">
 
 			<p:column priority="5">
 				<f:facet name="header">
-					<h:outputText value="login" />
+					<h:outputText value="Nazwa albumu" />
 				</f:facet>
-				<h:outputText value="#{p.userLogin}" />
+				<h:outputText value="#{p.albumName}" />
 			</p:column>
 
 			<p:column>
 				<f:facet name="header">
-					<h:outputText value="hasło" />
+					<h:outputText value="Dodany przez id" />
 				</f:facet>
-				<h:outputText value="#{p.userPassword}" />
-			</p:column>
-
-			<p:column>
-				<f:facet name="header">
-					<h:outputText value="rola" />
-				</f:facet>
-				<h:outputText value="#{p.userRole}" />
+				<h:outputText value="#{p.addedById}" />
 			</p:column>
 			
 			<p:column>
 				<f:facet name="header">
-					<h:outputText value="id" />
+					<h:outputText value="Id albumu" />
 				</f:facet>
-				<h:outputText value="#{p.userId}" />
+				<h:outputText value="#{p.albumId}" />
 			</p:column>
+
 
 			<p:column>
 				<f:facet name="header">
@@ -72,10 +66,13 @@
 				</f:facet>
 
 				<p:commandButton value="Edytuj"
-					action="#{userListBB.editUser(p)}" />
+					action="#{albumListBB.editAlbum(p)}" />
 
 				<p:commandButton value="Usuń"
-					action="#{userListBB.deleteUser(p)}" update="@form" />
+					action="#{albumListBB.deleteAlbum(p)}" update="@form" />
+					
+				<p:commandButton value="Komentuj"
+					action="#{albumListBB.commentAlbum(p)}" />
 
 			</p:column>
 

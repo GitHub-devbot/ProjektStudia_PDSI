@@ -18,19 +18,20 @@ public class Band implements Serializable {
 	@Column(name="band_id")
 	private int bandId;
 
+	@Column(name="added_by_id")
+	private int addedById;
+
+	@Lob
 	@Column(name="band_name")
-	private int bandName;
+	private String bandName;
 
+	@Lob
 	@Column(name="singer_name")
-	private int singerName;
+	private String singerName;
 
+	@Lob
 	@Column(name="singer_surname")
-	private int singerSurname;
-
-	//bi-directional one-to-one association to Comment
-	@OneToOne
-	@JoinColumn(name="band_id")
-	private Comment comment;
+	private String singerSurname;
 
 	public Band() {
 	}
@@ -43,36 +44,36 @@ public class Band implements Serializable {
 		this.bandId = bandId;
 	}
 
-	public int getBandName() {
+	public int getAddedById() {
+		return this.addedById;
+	}
+
+	public void setAddedById(int addedById) {
+		this.addedById = addedById;
+	}
+
+	public String getBandName() {
 		return this.bandName;
 	}
 
-	public void setBandName(int bandName) {
+	public void setBandName(String bandName) {
 		this.bandName = bandName;
 	}
 
-	public int getSingerName() {
+	public String getSingerName() {
 		return this.singerName;
 	}
 
-	public void setSingerName(int singerName) {
+	public void setSingerName(String singerName) {
 		this.singerName = singerName;
 	}
 
-	public int getSingerSurname() {
+	public String getSingerSurname() {
 		return this.singerSurname;
 	}
 
-	public void setSingerSurname(int singerSurname) {
+	public void setSingerSurname(String singerSurname) {
 		this.singerSurname = singerSurname;
-	}
-
-	public Comment getComment() {
-		return this.comment;
-	}
-
-	public void setComment(Comment comment) {
-		this.comment = comment;
 	}
 
 }

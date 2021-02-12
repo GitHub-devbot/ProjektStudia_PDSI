@@ -20,6 +20,9 @@ public class Comment implements Serializable {
 	@Column(name="comment_id")
 	private int commentId;
 
+	@Column(name="added_by_id")
+	private int addedById;
+
 	@Column(name="album_id")
 	private int albumId;
 
@@ -36,23 +39,6 @@ public class Comment implements Serializable {
 	@Column(name="song_id")
 	private int songId;
 
-	//bi-directional one-to-one association to Album
-	@OneToOne(mappedBy="comment")
-	private Album album;
-
-	//bi-directional one-to-one association to Band
-	@OneToOne(mappedBy="comment")
-	private Band band;
-
-	//bi-directional many-to-one association to User
-	@ManyToOne
-	@JoinColumn(name="added_by_id")
-	private User user;
-
-	//bi-directional one-to-one association to Song
-	@OneToOne(mappedBy="comment")
-	private Song song;
-
 	public Comment() {
 	}
 
@@ -62,6 +48,14 @@ public class Comment implements Serializable {
 
 	public void setCommentId(int commentId) {
 		this.commentId = commentId;
+	}
+
+	public int getAddedById() {
+		return this.addedById;
+	}
+
+	public void setAddedById(int addedById) {
+		this.addedById = addedById;
 	}
 
 	public int getAlbumId() {
@@ -102,38 +96,6 @@ public class Comment implements Serializable {
 
 	public void setSongId(int songId) {
 		this.songId = songId;
-	}
-
-	public Album getAlbum() {
-		return this.album;
-	}
-
-	public void setAlbum(Album album) {
-		this.album = album;
-	}
-
-	public Band getBand() {
-		return this.band;
-	}
-
-	public void setBand(Band band) {
-		this.band = band;
-	}
-
-	public User getUser() {
-		return this.user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
-	public Song getSong() {
-		return this.song;
-	}
-
-	public void setSong(Song song) {
-		this.song = song;
 	}
 
 }
