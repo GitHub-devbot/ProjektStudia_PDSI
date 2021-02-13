@@ -12,17 +12,6 @@
 </h:head>
 <h:body style="background-color: #eee; margin: 0.5em;">
 
-	<p:panel header="Opcje wyszukiwania" toggleable="true" collapsed="true"
-		style="margin-bottom: 1em;">
-		<h:form>
-			<h:panelGrid columns="2" cellpadding="5">
-				<h:outputLabel value="login:" />
-				<p:inputText value="#{userListBB.userLogin}" />
-				<p:commandButton value="Szukaj" update="form-table" />
-			</h:panelGrid>
-		</h:form>
-	</p:panel>
-
 	<p:messages />
 
 	<h:form id="form-table" style="margin-bottom:1em;">
@@ -38,34 +27,25 @@
 			
 		<p:commandButton value="Dodaj nowy komentarz"
 			action="#{commentListBB.newComment()}" style="margin-bottom:1em;"/>		
+			
+		<p:commandButton value="Dodaj nowy zespół"
+			action="#{bandListBB.newBand()}" style="margin-bottom:1em;"/>					
 
 		<p:dataTable value="#{userListBB.list}" var="p">
 
-			<p:column priority="5">
-				<f:facet name="header">
-					<h:outputText value="login" />
-				</f:facet>
+			<p:column headerText="Login" sortBy="#{p.userLogin}" filterBy="#{p.userLogin}">
 				<h:outputText value="#{p.userLogin}" />
 			</p:column>
-
-			<p:column>
-				<f:facet name="header">
-					<h:outputText value="hasło" />
-				</f:facet>
+			
+			<p:column headerText="Hasło" sortBy="#{p.userPassword}" filterBy="#{p.userPassword}">
 				<h:outputText value="#{p.userPassword}" />
 			</p:column>
-
-			<p:column>
-				<f:facet name="header">
-					<h:outputText value="rola" />
-				</f:facet>
+			
+			<p:column headerText="Rola" sortBy="#{p.userRole}" filterBy="#{p.userRole}">
 				<h:outputText value="#{p.userRole}" />
 			</p:column>
 			
-			<p:column>
-				<f:facet name="header">
-					<h:outputText value="id" />
-				</f:facet>
+			<p:column headerText="Id" sortBy="#{p.userId}" filterBy="#{p.userId}">
 				<h:outputText value="#{p.userId}" />
 			</p:column>
 
@@ -80,10 +60,12 @@
 				<p:commandButton value="Usuń"
 					action="#{userListBB.deleteUser(p)}" update="@form" />
 
-			</p:column>
-
+			</p:column>			
+            
 		</p:dataTable>
-	</h:form>
+		</h:form>
+		
+	
 
 </h:body>
 </html>

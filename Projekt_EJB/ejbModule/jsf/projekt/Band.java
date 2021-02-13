@@ -25,18 +25,10 @@ public class Band implements Serializable {
 	@Column(name="band_name")
 	private String bandName;
 
-	@Lob
-	@Column(name="singer_name")
-	private String singerName;
-
-	@Lob
-	@Column(name="singer_surname")
-	private String singerSurname;
-
 	public Band() {
 	}
 
-	public int getBandId() {
+	public Integer getBandId() {
 		return this.bandId;
 	}
 
@@ -58,22 +50,6 @@ public class Band implements Serializable {
 
 	public void setBandName(String bandName) {
 		this.bandName = bandName;
-	}
-
-	public String getSingerName() {
-		return this.singerName;
-	}
-
-	public void setSingerName(String singerName) {
-		this.singerName = singerName;
-	}
-
-	public String getSingerSurname() {
-		return this.singerSurname;
-	}
-
-	public void setSingerSurname(String singerSurname) {
-		this.singerSurname = singerSurname;
 	}
 
 }
