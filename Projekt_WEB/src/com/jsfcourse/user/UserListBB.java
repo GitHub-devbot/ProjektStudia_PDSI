@@ -22,7 +22,7 @@ public class UserListBB {
 	private static final String PAGE_USER_EDIT = "userEdit?faces-redirect=true";
 	private static final String PAGE_STAY_AT_THE_SAME = null;
 
-	private String role;
+	private String login;
 		
 	@Inject
 	ExternalContext extcontext;
@@ -33,12 +33,12 @@ public class UserListBB {
 	@EJB
 	userDAO userDAO;
 		
-	public String getuserRole() {
-		return role;
+	public String getuserLogin() {
+		return login;
 	}
 
-	public void setuserRole(String role) {
-		this.role = role;
+	public void setuserLogin(String login) {
+		this.login = login;
 	}
 
 	public List<User> getFullList(){
@@ -51,8 +51,8 @@ public class UserListBB {
 		//1. Prepare search params
 		Map<String,Object> searchParams = new HashMap<String, Object>();
 		
-		if (role != null && role.length() > 0){
-			searchParams.put("role", role);
+		if (login != null && login.length() > 0){
+			searchParams.put("login", login);
 		}
 		
 		//2. Get list

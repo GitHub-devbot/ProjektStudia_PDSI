@@ -16,8 +16,8 @@
 		style="margin-bottom: 1em;">
 		<h:form>
 			<h:panelGrid columns="2" cellpadding="5">
-				<h:outputLabel value="album_name:" />
-				<p:inputText value="#{albumListBB.albumName}" />
+				<h:outputLabel value="comment_name:" />
+				<p:inputText value="#{commentListBB.commentName}" />
 				<p:commandButton value="Szukaj" update="form-table" />
 			</h:panelGrid>
 		</h:form>
@@ -35,47 +35,64 @@
 			
 		<p:commandButton value="Dodaj nowy album"
 			action="#{albumListBB.newAlbum()}" style="margin-bottom:1em;"/>		
-			
+				
 		<p:commandButton value="Dodaj nowy komentarz"
-			action="#{commentListBB.newComment()}" style="margin-bottom:1em;"/>	
+			action="#{commentListBB.newComment()}" style="margin-bottom:1em;"/>			
 
-		<p:dataTable value="#{albumListBB.list}" var="p">
+		<p:dataTable value="#{commentListBB.list}" var="p">
 
 			<p:column priority="5">
 				<f:facet name="header">
-					<h:outputText value="Nazwa albumu" />
+					<h:outputText value="Komentarz" />
 				</f:facet>
-				<h:outputText value="#{p.albumName}" />
+				<h:outputText value="#{p.comment}" />
 			</p:column>
 
 			<p:column>
 				<f:facet name="header">
-					<h:outputText value="Dodany przez id" />
+					<h:outputText value="Dodany przez" />
 				</f:facet>
 				<h:outputText value="#{p.addedById}" />
 			</p:column>
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Data dodania" />
+				</f:facet>
+				<h:outputText value="#{p.postDate}" />
+			</p:column>
+			
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Id piosenki" />
+				</f:facet>
+				<h:outputText value="#{p.songId}" />
+			</p:column>			
 			
 			<p:column>
 				<f:facet name="header">
 					<h:outputText value="Id albumu" />
 				</f:facet>
 				<h:outputText value="#{p.albumId}" />
-			</p:column>
-
-
+			</p:column>	
+			
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Id zespolu" />
+				</f:facet>
+				<h:outputText value="#{p.authorId}" />
+			</p:column>	
+			
 			<p:column>
 				<f:facet name="header">
 					<h:outputText value="opcje" />
 				</f:facet>
 
 				<p:commandButton value="Edytuj"
-					action="#{albumListBB.editAlbum(p)}" />
+					action="#{commentListBB.editComment(p)}" />
 
 				<p:commandButton value="Usuń"
-					action="#{albumListBB.deleteAlbum(p)}" update="@form" />
-					
-				<p:commandButton value="Komentarze"
-					action="#{commentListBB.albumComments(p)}" />
+					action="#{commentListBB.deleteComment(p)}" update="@form" />					
 
 			</p:column>
 

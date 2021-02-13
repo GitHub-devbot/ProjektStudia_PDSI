@@ -35,6 +35,9 @@
 			
 		<p:commandButton value="Dodaj nowy album"
 			action="#{albumListBB.newAlbum()}" style="margin-bottom:1em;"/>			
+			
+		<p:commandButton value="Dodaj nowy komentarz"
+			action="#{commentListBB.newComment()}" style="margin-bottom:1em;"/>	
 
 		<p:dataTable value="#{songListBB.list}" var="p">
 

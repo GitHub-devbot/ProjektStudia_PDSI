@@ -32,9 +32,8 @@ public class Comment implements Serializable {
 	@Lob
 	private String comment;
 
-	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="post_date")
-	private Date postDate;
+	private String postDate;
 
 	@Column(name="song_id")
 	private int songId;
@@ -42,7 +41,7 @@ public class Comment implements Serializable {
 	public Comment() {
 	}
 
-	public int getCommentId() {
+	public Integer getCommentId() {
 		return this.commentId;
 	}
 
@@ -82,11 +81,15 @@ public class Comment implements Serializable {
 		this.comment = comment;
 	}
 
-	public Date getPostDate() {
+	public String getPostDate() {
+	//	if (this.postDate == null) {
+		java.util.Date date=new java.util.Date();  
+		this.postDate = String.valueOf(date);
+	//	}
 		return this.postDate;
 	}
 
-	public void setPostDate(Date postDate) {
+	public void setPostDate(String postDate) {
 		this.postDate = postDate;
 	}
 

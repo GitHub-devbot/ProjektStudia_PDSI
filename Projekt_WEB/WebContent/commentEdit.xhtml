@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:metadata>
+    <f:viewAction action="#{commentEditBB.onLoad()}" />
+</f:metadata>
+
+<h:head>
+	<meta charset="utf-8"/>
+	<title>Projekt - PDSI</title>
+</h:head>
+
+<h:body style="background-color: #eee; margin: 0.5em;">
+
+	<p:panel toggleable="true" header="Edycja rekordu">
+
+		<h:form rendered="#{commentEditBB.comment != null}">
+			<h:panelGrid columns="3" cellpadding="5">
+
+				<h:outputLabel for="p-comment" value="komentarz" />
+				<p:inputText id="p-comment" value="#{commentEditBB.comment.comment}"
+					required="true" requiredMessage="Wpisz komentarz"
+					validatorMessage="co najwyżej 120 znaków">
+					<f:validateLength maximum="120" />
+				</p:inputText>
+				<p:message for="p-comment" display="icon"/>
+
+				<h:outputLabel for="p-added_by_id" value="Dodany przez" />
+				<p:inputText id="p-added_by_id" value="#{commentEditBB.comment.addedById}"
+					validatorMessage="co najwyżej 40 znaków">
+					<f:validateLength maximum="40" />
+				</p:inputText>
+				<p:message for="p-added_by_id" display="icon"/>
+
+				<h:outputLabel for="p-post_date" value="Data dodania" />
+				<p:inputText id="p-post_date" value="#{commentEditBB.comment.postDate}"
+					required="true" requiredMessage="Podaj date dodania"
+					validatorMessage="co najwyżej 40 znaków">
+					<f:validateLength maximum="40" />
+				</p:inputText>
+				<p:message for="p-post_date" display="icon"/>
+				
+				<h:outputLabel for="p-album_id" value="Id albumu" />
+				<p:inputText id="p-album_id" value="#{commentEditBB.comment.albumId}"
+					validatorMessage="co najwyżej 40 znaków">
+					<f:validateLength maximum="40" />
+				</p:inputText>
+				<p:message for="p-album_id" display="icon"/>
+				
+				<h:outputLabel for="p-author_id" value="Id autora" />
+				<p:inputText id="p-author_id" value="#{commentEditBB.comment.authorId}"
+					validatorMessage="co najwyżej 40 znaków">
+					<f:validateLength maximum="40" />
+				</p:inputText>
+				<p:message for="p-author_id" display="icon"/>
+				
+				<h:outputLabel for="p-song_id" value="Id utworu" />
+				<p:inputText id="p-song_id" value="#{commentEditBB.comment.songId}"
+					validatorMessage="co najwyżej 40 znaków">
+					<f:validateLength maximum="40" />
+				</p:inputText>
+				<p:message for="p-song_id" display="icon"/>
+				
+			</h:panelGrid>
+			<p:messages id="msgs" />
+
+			<p:commandButton value="Zapisz" action="#{commentEditBB.saveData()}"
+				style="margin-right: 1em;" update="@form" />
+
+			<p:button value="Anuluj" outcome="commentList" />
+		</h:form>
+
+	</p:panel>
+
+</h:body>
+
+</html>

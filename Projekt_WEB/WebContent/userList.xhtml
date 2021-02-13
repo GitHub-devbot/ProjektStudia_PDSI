@@ -16,8 +16,8 @@
 		style="margin-bottom: 1em;">
 		<h:form>
 			<h:panelGrid columns="2" cellpadding="5">
-				<h:outputLabel value="rola:" />
-				<p:inputText value="#{userListBB.userRole}" />
+				<h:outputLabel value="login:" />
+				<p:inputText value="#{userListBB.userLogin}" />
 				<p:commandButton value="Szukaj" update="form-table" />
 			</h:panelGrid>
 		</h:form>
@@ -34,7 +34,10 @@
 			action="#{songListBB.newSong()}" style="margin-bottom:1em;"/>	
 			
 		<p:commandButton value="Dodaj nowy album"
-			action="#{albumListBB.newAlbum()}" style="margin-bottom:1em;"/>			
+			action="#{albumListBB.newAlbum()}" style="margin-bottom:1em;"/>		
+			
+		<p:commandButton value="Dodaj nowy komentarz"
+			action="#{commentListBB.newComment()}" style="margin-bottom:1em;"/>		
 
 		<p:dataTable value="#{userListBB.list}" var="p">
 
