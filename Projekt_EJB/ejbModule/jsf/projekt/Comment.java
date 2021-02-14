@@ -82,10 +82,10 @@ public class Comment implements Serializable {
 	}
 
 	public String getPostDate() {
-	//	if (this.postDate == null) {
+		if (this.postDate == null) {
 		java.util.Date date=new java.util.Date();  
 		this.postDate = String.valueOf(date);
-	//	}
+		}
 		return this.postDate;
 	}
 

@@ -23,55 +23,51 @@
 			action="#{songListBB.newSong()}" style="margin-bottom:1em;"/>	
 			
 		<p:commandButton value="Dodaj nowy album"
-			action="#{albumListBB.newAlbum()}" style="margin-bottom:1em;"/>			
-			
+			action="#{albumListBB.newAlbum()}" style="margin-bottom:1em;"/>		
+				
 		<p:commandButton value="Dodaj nowy komentarz"
 			action="#{commentListBB.newComment()}" style="margin-bottom:1em;"/>	
 			
 		<p:commandButton value="Dodaj nowy zespół"
-			action="#{bandListBB.newBand()}" style="margin-bottom:1em;"/>					
+			action="#{bandListBB.newBand()}" style="margin-bottom:1em;"/>							
 
-		<p:dataTable value="#{songListBB.list}" var="p">
-
-			<p:column headerText="Nazwa utworu" sortBy="#{p.songName}" filterBy="#{p.songName}">
-				<h:outputText value="#{p.songName}" />
+		<p:dataTable value="#{commentListBB.list}" var="p" filterEvent="">
+			
+			<p:column headerText="Komentarz" sortBy="#{p.comment}" >
+				<h:outputText value="#{p.comment}" />
 			</p:column>
 
-			<p:column headerText="Autor utworu" sortBy="#{p.songAuthor}" filterBy="#{p.songAuthor}">
-				<h:outputText value="#{p.songAuthor}" />
+			<p:column headerText="Dodany przez" sortBy="#{p.addedById}" >
+				<h:outputText value="#{p.addedById}" />
 			</p:column>
 			
-			<p:column headerText="Adres utworu" sortBy="#{p.songUrl}" filterBy="#{p.songUrl}">
-				<audio controls="controls">
-				<source src="#{p.songUrl}"></source>
-				</audio>
+			<p:column headerText="Data dodania" sortBy="#{p.postDate}" >
+				<h:outputText value="#{p.postDate}" />
 			</p:column>
 			
-			<p:column headerText="Id albumu" sortBy="#{p.albumId}" filterBy="#{p.albumId}">
+			<p:column headerText="Id piosenki" sortBy="#{p.songId}" >
+				<h:outputText value="#{p.songId}" />
+			</p:column>
+			
+			<p:column headerText="Id albumu" sortBy="#{p.albumId}" >
 				<h:outputText value="#{p.albumId}" />
 			</p:column>
 			
-			<p:column headerText="Dodany przez Id" sortBy="#{p.addedById}" filterBy="#{p.addedById}">
-				<h:outputText value="#{p.addedById}" />
-			</p:column>		
+			<p:column headerText="Id autora" sortBy="#{p.authorId}" filterBy="#{p.authorId}" filterValue="1"   >
+			<p:autoUpdate />
+				<h:outputText value="#{p.authorId}" />
+			</p:column>
 			
-			<p:column headerText="Id utworu" sortBy="#{p.songId}" filterBy="#{p.songId}">			
-				<h:outputText value="#{p.songId}" />
-			</p:column>					
-
 			<p:column>
 				<f:facet name="header">
 					<h:outputText value="opcje" />
 				</f:facet>
 
 				<p:commandButton value="Edytuj"
-					action="#{songListBB.editSong(p)}" />
+					action="#{commentListBB.editComment(p)}" />
 
 				<p:commandButton value="Usuń"
-					action="#{songListBB.deleteSong(p)}" update="@form" />
-					
-				<p:commandButton value="Komentuj"
-					action="#{songListBB.commentSong(p)}" />
+					action="#{commentListBB.deleteComment(p)}" update="@form" />					
 
 			</p:column>
 

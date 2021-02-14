@@ -15,15 +15,17 @@ import javax.servlet.http.HttpSession;
 
 import jsf.projektDAO.commentDAO;
 import jsf.projekt.Comment;
+import jsf.projekt.Band;
 
 @Named
 @RequestScoped
 public class CommentListBB {
 	private static final String PAGE_COMMENT_EDIT = "commentEdit?faces-redirect=true";
+	private static final String PAGE_COMMENTS_BAND = "commentsBand?faces-redirect=true";
 	private static final String PAGE_STAY_AT_THE_SAME = null;
 
-	private String name;
-	private int albumId;
+	private String comment;
+	private int commentId;
 		
 	@Inject
 	ExternalContext extcontext;
@@ -34,17 +36,17 @@ public class CommentListBB {
 	@EJB
 	commentDAO commentDAO;
 	
-	public Integer getalbumComment() {
-		return albumId;
+	public Integer getcommentId() {
+		return commentId;
 	}
 	
 	
-	public String getcommentName() {
-		return name;
+	public String getcomment() {
+		return comment;
 	}
 
-	public void setcommentName(String name) {
-		this.name = name;
+	public void setcomment(String comment) {
+		this.comment = comment;
 	}
 
 	public List<Comment> getFullList(){
@@ -57,8 +59,8 @@ public class CommentListBB {
 		//1. Prepare search params
 		Map<String,Object> searchParams = new HashMap<String, Object>();
 		
-		if (name != null && name.length() > 0){
-			searchParams.put("name", name);
+		if (comment != null && comment.length() > 0){
+			searchParams.put("comment", comment);
 		}
 		
 		//2. Get list
@@ -67,22 +69,6 @@ public class CommentListBB {
 		return list;
 	}
 	
-	public List<Comment> albumComments(){
-		List<Comment> list = null;
-		
-		//1. Prepare search params
-		Map<String,Object> searchParams = new HashMap<String, Object>();
-		
-	//	if (albumId != null && albumId.length() > 0){
-			searchParams.put("albumId", albumId);
-	//	}
-		
-		//2. Get list
-		list = commentDAO.getList(searchParams);
-		
-		return list;
-	}
-
 	public String newComment(){
 		Comment comment = new Comment();
 		
@@ -105,6 +91,13 @@ public class CommentListBB {
 		flash.put("comment", comment);
 		
 		return PAGE_COMMENT_EDIT;
+	}
+	
+	public String commentsBand(Band band){
+
+		flash.put("band", band);
+		
+		return PAGE_COMMENTS_BAND;
 	}
 
 	public String deleteComment(Comment comment){

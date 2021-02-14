@@ -40,9 +40,7 @@
 
 				<h:outputLabel for="p-song_url" value="url utworu" />
 				<p:inputText id="p-song_url" value="#{songEditBB.song.songUrl}"
-					required="true" requiredMessage="podaj url"
-					validatorMessage="co najwyżej 40 znaków">
-					<f:validateLength maximum="40" />
+					required="true" requiredMessage="podaj url">
 				</p:inputText>
 				<p:message for="p-song_url" display="icon"/>
 				
