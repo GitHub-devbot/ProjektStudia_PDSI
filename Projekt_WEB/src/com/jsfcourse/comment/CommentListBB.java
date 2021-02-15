@@ -66,6 +66,8 @@ public class CommentListBB {
 		//2. Get list
 		list = commentDAO.getList(searchParams);
 		
+		// list.remove(list.get(1));
+		
 		return list;
 	}
 	
@@ -94,9 +96,9 @@ public class CommentListBB {
 	}
 	
 	public String commentsBand(Band band){
-
+	//	if(bandId == comment.getAuthorId() ) {
 		flash.put("band", band);
-		
+	//	}
 		return PAGE_COMMENTS_BAND;
 	}
 

@@ -56,14 +56,14 @@ public List<Comment> getList(Map<String, Object> searchParams) {
 	String orderby = "order by p.commentId asc, p.postDate";
 
 	// search for surname
-	String commentName = (String) searchParams.get("commentName");
-	if (commentName != null) {
+	String authorId = (String) searchParams.get("authorId");
+	if (authorId != null) {
 		if (where.isEmpty()) {
 			where = "where ";
 		} else {
 			where += "and ";
 		}
-		where += "p.commentName like :commentName ";
+		where += "p.authorId like :authorId ";
 	}
 	
 	// ... other parameters ... 
@@ -72,8 +72,8 @@ public List<Comment> getList(Map<String, Object> searchParams) {
 	Query query = em.createQuery(select + from + where + orderby);
 
 	// 3. Set configured parameters
-	if (commentName != null) {
-		query.setParameter("commentName", commentName+"%");
+	if (authorId != null) {
+		query.setParameter("authorId", authorId+"%");
 	}
 
 	// ... other parameters ... 

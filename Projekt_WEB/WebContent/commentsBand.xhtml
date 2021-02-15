@@ -12,6 +12,17 @@
 </h:head>
 <h:body style="background-color: #eee; margin: 0.5em;">
 
+	<p:panel header="Opcje wyszukiwania" toggleable="true" collapsed="true"
+		style="margin-bottom: 1em;">
+		<h:form>
+			<h:panelGrid columns="2" cellpadding="5">
+				<h:outputLabel value="id zespołu:" />
+				<p:inputText value="#{commentListBB.comment}" />
+				<p:commandButton value="Szukaj" update="form-table" />
+			</h:panelGrid>
+		</h:form>
+	</p:panel>
+
 	<p:messages />
 
 	<h:form id="form-table" style="margin-bottom:1em;">
@@ -31,7 +42,7 @@
 		<p:commandButton value="Dodaj nowy zespół"
 			action="#{bandListBB.newBand()}" style="margin-bottom:1em;"/>							
 
-		<p:dataTable value="#{commentListBB.list}" var="p" filterEvent="">
+		<p:dataTable value="#{commentListBB.list}" var="p" filterEvent="" >
 			
 			<p:column headerText="Komentarz" sortBy="#{p.comment}" >
 				<h:outputText value="#{p.comment}" />
@@ -44,20 +55,13 @@
 			<p:column headerText="Data dodania" sortBy="#{p.postDate}" >
 				<h:outputText value="#{p.postDate}" />
 			</p:column>
-			
-			<p:column headerText="Id piosenki" sortBy="#{p.songId}" >
-				<h:outputText value="#{p.songId}" />
-			</p:column>
-			
-			<p:column headerText="Id albumu" sortBy="#{p.albumId}" >
-				<h:outputText value="#{p.albumId}" />
-			</p:column>
-			
-			<p:column headerText="Id autora" sortBy="#{p.authorId}" filterBy="#{p.authorId}" filterValue="1"   >
-			<p:autoUpdate />
+
+			<p:column headerText="Id zespołu" sortBy="#{p.authorId}" filterBy="#{p.authorId}" filterValue="1"  >
+			<p:autoUpdate  />
 				<h:outputText value="#{p.authorId}" />
+				
 			</p:column>
-			
+
 			<p:column>
 				<f:facet name="header">
 					<h:outputText value="opcje" />
@@ -71,6 +75,9 @@
 
 			</p:column>
 
+		</p:dataTable>
+		
+		<p:dataTable value="#{commentListBB.list}" var="p" filterEvent="" >
 		</p:dataTable>
 	</h:form>
 
