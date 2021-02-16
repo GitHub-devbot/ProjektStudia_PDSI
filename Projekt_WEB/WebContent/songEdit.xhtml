@@ -15,6 +15,16 @@
 	<title>Projekt - PDSI</title>
 </h:head>
 
+<style>
+body {
+    background-image: url(assets/tran.png);
+    background-size: cover;
+    background-repeat: no-repeat; 
+    background-attachment:fixed;
+
+}
+</style>
+
 <h:body style="background-color: #eee; margin: 0.5em;">
 
 	<p:panel toggleable="true" header="Edycja rekordu">
@@ -22,13 +32,12 @@
 		<h:form rendered="#{songEditBB.song != null}">
 			<h:panelGrid columns="3" cellpadding="5">
 
-				<h:outputLabel for="p-song_author" value="autor" />
-				<p:inputText id="p-song_author" value="#{songEditBB.song.songAuthor}"
-					required="true" requiredMessage="Podaj autora"
+				<h:outputLabel for="p-band" value="zespół" />
+				<p:inputText id="p-band" value="#{songEditBB.song.band}"
 					validatorMessage="co najwyżej 40 znaków">
 					<f:validateLength maximum="40" />
 				</p:inputText>
-				<p:message for="p-song_author" display="icon"/>
+				<p:message for="p-band" display="icon"/>
 
 				<h:outputLabel for="p-song_name" value="nazwa" />
 				<p:inputText id="p-song_name" value="#{songEditBB.song.songName}"
@@ -44,21 +53,19 @@
 				</p:inputText>
 				<p:message for="p-song_url" display="icon"/>
 				
-				<h:outputLabel for="p-album_id" value="id albumu" />
-				<p:inputText id="p-album_id" value="#{songEditBB.song.albumId}"
-					required="true" requiredMessage="podaj id albumu"
+				<h:outputLabel for="p-album2" value="id albumu" />
+				<p:inputText id="p-album2" value="#{songEditBB.song.album2}"
 					validatorMessage="co najwyżej 40 znaków">
 					<f:validateLength maximum="40" />
 				</p:inputText>
-				<p:message for="p-album_id" display="icon"/>
+				<p:message for="p-album2" display="icon"/>
 				
-				<h:outputLabel for="p-added_by_id" value="dodane przez id" />
-				<p:inputText id="p-added_by_id" value="#{songEditBB.song.addedById}"
-					required="true" requiredMessage="podaj przez kogo dodane"
+				<h:outputLabel for="p-user1" value="dodane przez id" />
+				<p:inputText id="p-user1" value="#{songEditBB.song.user1}"
 					validatorMessage="co najwyżej 40 znaków">
 					<f:validateLength maximum="40" />
 				</p:inputText>
-				<p:message for="p-added_by_id" display="icon"/>
+				<p:message for="p-user1" display="icon"/>
 				
 			</h:panelGrid>
 			<p:messages id="msgs" />

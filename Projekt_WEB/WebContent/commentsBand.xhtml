@@ -10,6 +10,17 @@
 	<meta charset="utf-8"/>
 	<title>Projekt - PDSI</title>
 </h:head>
+
+<style>
+body {
+    background-image: url(assets/tran.png);
+    background-size: cover;
+    background-repeat: no-repeat; 
+    background-attachment:fixed;
+
+}
+</style>
+
 <h:body style="background-color: #eee; margin: 0.5em;">
 
 	<p:panel header="Opcje wyszukiwania" toggleable="true" collapsed="true"
@@ -48,17 +59,17 @@
 				<h:outputText value="#{p.comment}" />
 			</p:column>
 
-			<p:column headerText="Dodany przez" sortBy="#{p.addedById}" >
-				<h:outputText value="#{p.addedById}" />
+			<p:column headerText="Dodany przez" sortBy="#{p.user1}" >
+				<h:outputText value="#{p.user1}" />
 			</p:column>
 			
 			<p:column headerText="Data dodania" sortBy="#{p.postDate}" >
 				<h:outputText value="#{p.postDate}" />
 			</p:column>
 
-			<p:column headerText="Id zespołu" sortBy="#{p.authorId}" filterBy="#{p.authorId}" filterValue="1"  >
+			<p:column headerText="Id zespołu" sortBy="#{p.band2}" filterBy="#{p.band2}" filterValue="1"  >
 			<p:autoUpdate  />
-				<h:outputText value="#{p.authorId}" />
+				<h:outputText value="#{p.band2}" />
 				
 			</p:column>
 

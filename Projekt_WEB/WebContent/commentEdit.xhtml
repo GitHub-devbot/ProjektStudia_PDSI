@@ -15,6 +15,16 @@
 	<title>Projekt - PDSI</title>
 </h:head>
 
+<style>
+body {
+    background-image: url(assets/tran.png);
+    background-size: cover;
+    background-repeat: no-repeat; 
+    background-attachment:fixed;
+
+}
+</style>
+
 <h:body style="background-color: #eee; margin: 0.5em;">
 
 	<p:panel toggleable="true" header="Edycja rekordu">
@@ -30,12 +40,12 @@
 				</p:inputText>
 				<p:message for="p-comment" display="icon"/>
 
-				<h:outputLabel for="p-added_by_id" value="Dodany przez" />
-				<p:inputText id="p-added_by_id" value="#{commentEditBB.comment.addedById}"
+				<h:outputLabel for="p-user1" value="Dodany przez" />
+				<p:inputText id="p-user1" value="#{commentEditBB.comment.user1}"
 					validatorMessage="co najwyżej 40 znaków">
 					<f:validateLength maximum="40" />
 				</p:inputText>
-				<p:message for="p-added_by_id" display="icon"/>
+				<p:message for="p-user1" display="icon"/>
 
 				<h:outputLabel for="p-post_date" value="Data dodania" />
 				<p:inputText id="p-post_date" value="#{commentEditBB.comment.postDate}"
@@ -45,26 +55,26 @@
 				</p:inputText>
 				<p:message for="p-post_date" display="icon"/>
 				
-				<h:outputLabel for="p-album_id" value="Id albumu" />
-				<p:inputText id="p-album_id" value="#{commentEditBB.comment.albumId}"
+				<h:outputLabel for="p-album2" value="Id albumu" />
+				<p:inputText id="p-album2" value="#{commentEditBB.comment.album2}"
 					validatorMessage="co najwyżej 40 znaków">
 					<f:validateLength maximum="40" />
 				</p:inputText>
-				<p:message for="p-album_id" display="icon"/>
+				<p:message for="p-album2" display="icon"/>
 				
-				<h:outputLabel for="p-author_id" value="Id autora" />
-				<p:inputText id="p-author_id" value="#{commentEditBB.comment.authorId}"
+				<h:outputLabel for="p-band2" value="Id autora" />
+				<p:inputText id="p-band2" value="#{commentEditBB.comment.band2}"
 					validatorMessage="co najwyżej 40 znaków">
 					<f:validateLength maximum="40" />
 				</p:inputText>
-				<p:message for="p-author_id" display="icon"/>
+				<p:message for="p-band2" display="icon"/>
 				
-				<h:outputLabel for="p-song_id" value="Id utworu" />
-				<p:inputText id="p-song_id" value="#{commentEditBB.comment.songId}"
+				<h:outputLabel for="p-song1" value="Id utworu" />
+				<p:inputText id="p-song1" value="#{commentEditBB.comment.song1}"
 					validatorMessage="co najwyżej 40 znaków">
 					<f:validateLength maximum="40" />
 				</p:inputText>
-				<p:message for="p-song_id" display="icon"/>
+				<p:message for="p-song1" display="icon"/>
 				
 			</h:panelGrid>
 			<p:messages id="msgs" />

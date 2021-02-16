@@ -10,6 +10,17 @@
 	<meta charset="utf-8"/>
 	<title>Projekt - PDSI</title>
 </h:head>
+
+<style>
+body {
+    background-image: url(assets/tran.png);
+    background-size: cover;
+    background-repeat: no-repeat; 
+    background-attachment:fixed;
+
+}
+</style>
+
 <h:body style="background-color: #eee; margin: 0.5em;">
 
 	<p:messages />
@@ -37,8 +48,8 @@
 				<h:outputText value="#{p.albumName}" />
 			</p:column>
 			
-			<p:column headerText="Dodany przez id" sortBy="#{p.addedById}" filterBy="#{p.addedById}">
-				<h:outputText value="#{p.addedById}" />
+			<p:column headerText="Dodany przez id" sortBy="#{p.user}" filterBy="#{p.user}">
+				<h:outputText value="#{p.user}" />
 			</p:column>
 			
 			<p:column headerText="Id albumu" sortBy="#{p.albumId}" filterBy="#{p.salbumId}">

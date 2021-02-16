@@ -53,17 +53,17 @@ public List<Song> getList(Map<String, Object> searchParams) {
 	String select = "select p ";
 	String from = "from Song p ";
 	String where = "";
-	String orderby = "order by p.songAuthor asc, p.songName";
+	String orderby = "order by p.band asc, p.songName";
 
 	// search for surname
-	String songAuthor = (String) searchParams.get("songAuthor");
-	if (songAuthor != null) {
+	String band = (String) searchParams.get("band");
+	if (band != null) {
 		if (where.isEmpty()) {
 			where = "where ";
 		} else {
 			where += "and ";
 		}
-		where += "p.songAuthor like :songAuthor ";
+		where += "p.band like :band ";
 	}
 	
 	// ... other parameters ... 
@@ -72,8 +72,8 @@ public List<Song> getList(Map<String, Object> searchParams) {
 	Query query = em.createQuery(select + from + where + orderby);
 
 	// 3. Set configured parameters
-	if (songAuthor != null) {
-		query.setParameter("songAuthor", songAuthor+"%");
+	if (band != null) {
+		query.setParameter("band", band+"%");
 	}
 
 	// ... other parameters ... 

@@ -15,6 +15,16 @@
 	<title>Projekt - PDSI</title>
 </h:head>
 
+<style>
+body {
+    background-image: url(assets/tran.png);
+    background-size: cover;
+    background-repeat: no-repeat; 
+    background-attachment:fixed;
+
+}
+</style>
+
 <h:body style="background-color: #eee; margin: 0.5em;">
 
 	<p:panel toggleable="true" header="Edycja rekordu">
@@ -30,13 +40,13 @@
 				</p:inputText>
 				<p:message for="p-band_name" display="icon"/>
 
-				<h:outputLabel for="p-added_by_id" value="zespół dodany przez" />
-				<p:inputText id="p-added_by_id" value="#{bandEditBB.band.addedById}"
+				<h:outputLabel for="p-user" value="zespół dodany przez" />
+				<p:inputText id="p-user" value="#{bandEditBB.band.user}"
 					required="true" requiredMessage="Podaj przez kogo dodany zespół"
 					validatorMessage="co najwyżej 40 znaków">
 					<f:validateLength maximum="40" />
 				</p:inputText>
-				<p:message for="p-added_by_id" display="icon"/>
+				<p:message for="p-user" display="icon"/>
 
 				
 				

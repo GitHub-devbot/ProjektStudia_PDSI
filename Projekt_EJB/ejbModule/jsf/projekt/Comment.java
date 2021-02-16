@@ -2,7 +2,6 @@ package jsf.projekt;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.util.Date;
 
 
 /**
@@ -20,23 +19,48 @@ public class Comment implements Serializable {
 	@Column(name="comment_id")
 	private int commentId;
 
-	@Column(name="added_by_id")
-	private int addedById;
-
-	@Column(name="album_id")
-	private int albumId;
-
-	@Column(name="author_id")
-	private int authorId;
-
 	@Lob
 	private String comment;
 
+	@Lob
 	@Column(name="post_date")
 	private String postDate;
 
-	@Column(name="song_id")
-	private int songId;
+	//bi-directional one-to-one association to Album
+	@OneToOne(mappedBy="comment")
+	private Album album1;
+
+	//bi-directional one-to-one association to Band
+	@OneToOne(mappedBy="comment")
+	private Band band1;
+
+	//bi-directional many-to-one association to Album
+	@ManyToOne
+	@JoinColumn(name="album_id")
+	private Album album2;
+
+	//bi-directional many-to-one association to Band
+	@ManyToOne
+	@JoinColumn(name="author_id")
+	private Band band2;
+
+	//bi-directional many-to-one association to Song
+	@ManyToOne
+	@JoinColumn(name="song_id")
+	private Song song1;
+
+	//bi-directional many-to-one association to User
+	@ManyToOne
+	@JoinColumn(name="added_by_id")
+	private User user1;
+
+	//bi-directional one-to-one association to Song
+	@OneToOne(mappedBy="comment")
+	private Song song2;
+
+	//bi-directional one-to-one association to User
+	@OneToOne(mappedBy="comment")
+	private User user2;
 
 	public Comment() {
 	}
@@ -49,30 +73,6 @@ public class Comment implements Serializable {
 		this.commentId = commentId;
 	}
 
-	public int getAddedById() {
-		return this.addedById;
-	}
-
-	public void setAddedById(int addedById) {
-		this.addedById = addedById;
-	}
-
-	public int getAlbumId() {
-		return this.albumId;
-	}
-
-	public void setAlbumId(int albumId) {
-		this.albumId = albumId;
-	}
-
-	public int getAuthorId() {
-		return this.authorId;
-	}
-
-	public void setAuthorId(int authorId) {
-		this.authorId = authorId;
-	}
-
 	public String getComment() {
 		return this.comment;
 	}
@@ -82,10 +82,6 @@ public class Comment implements Serializable {
 	}
 
 	public String getPostDate() {
-		if (this.postDate == null) {
-		java.util.Date date=new java.util.Date();  
-		this.postDate = String.valueOf(date);
-		}
 		return this.postDate;
 	}
 
@@ -93,12 +89,68 @@ public class Comment implements Serializable {
 		this.postDate = postDate;
 	}
 
-	public int getSongId() {
-		return this.songId;
+	public Album getAlbum1() {
+		return this.album1;
 	}
 
-	public void setSongId(int songId) {
-		this.songId = songId;
+	public void setAlbum1(Album album1) {
+		this.album1 = album1;
+	}
+
+	public Band getBand1() {
+		return this.band1;
+	}
+
+	public void setBand1(Band band1) {
+		this.band1 = band1;
+	}
+
+	public Album getAlbum2() {
+		return this.album2;
+	}
+
+	public void setAlbum2(Album album2) {
+		this.album2 = album2;
+	}
+
+	public Band getBand2() {
+		return this.band2;
+	}
+
+	public void setBand2(Band band2) {
+		this.band2 = band2;
+	}
+
+	public Song getSong1() {
+		return this.song1;
+	}
+
+	public void setSong1(Song song1) {
+		this.song1 = song1;
+	}
+
+	public User getUser1() {
+		return this.user1;
+	}
+
+	public void setUser1(User user1) {
+		this.user1 = user1;
+	}
+
+	public Song getSong2() {
+		return this.song2;
+	}
+
+	public void setSong2(Song song2) {
+		this.song2 = song2;
+	}
+
+	public User getUser2() {
+		return this.user2;
+	}
+
+	public void setUser2(User user2) {
+		this.user2 = user2;
 	}
 
 }

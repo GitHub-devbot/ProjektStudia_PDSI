@@ -10,6 +10,17 @@
 	<meta charset="utf-8"/>
 	<title>Projekt - PDSI</title>
 </h:head>
+
+<style>
+body {
+    background-image: url(assets/tran.png);
+    background-size: cover;
+    background-repeat: no-repeat; 
+    background-attachment:fixed;
+
+}
+</style>
+
 <h:body style="background-color: #eee; margin: 0.5em;">
 
 	<p:messages />
@@ -37,24 +48,24 @@
 				<h:outputText value="#{p.comment}" />
 			</p:column>
 
-			<p:column headerText="Dodany przez" sortBy="#{p.addedById}" filterBy="#{p.addedById}">
-				<h:outputText value="#{p.addedById}" />
+			<p:column headerText="Dodany przez" sortBy="#{p.user1}" filterBy="#{p.user1}">
+				<h:outputText value="#{p.user1}" />
 			</p:column>
 			
 			<p:column headerText="Data dodania" sortBy="#{p.postDate}" filterBy="#{p.postDate}">
 				<h:outputText value="#{p.postDate}" />
 			</p:column>
 			
-			<p:column headerText="Id piosenki" sortBy="#{p.songId}" filterBy="#{p.songId}">
-				<h:outputText value="#{p.songId}" />
+			<p:column headerText="Id piosenki" sortBy="#{p.song1}" filterBy="#{p.song1}">
+				<h:outputText value="#{p.song1}" />
 			</p:column>
 			
-			<p:column headerText="Id albumu" sortBy="#{p.albumId}" filterBy="#{p.albumId}">
-				<h:outputText value="#{p.albumId}" />
+			<p:column headerText="Id albumu" sortBy="#{p.album2}" filterBy="#{p.album2}">
+				<h:outputText value="#{p.album2}" />
 			</p:column>
 			
-			<p:column headerText="Id autora" sortBy="#{p.authorId}" filterBy="#{p.authorId}">
-				<h:outputText value="#{p.authorId}" />
+			<p:column headerText="Id autora" sortBy="#{p.band2}" filterBy="#{p.band2}">
+				<h:outputText value="#{p.band2}" />
 			</p:column>
 			
 			<p:column>

@@ -15,6 +15,16 @@
 	<title>Projekt - PDSI</title>
 </h:head>
 
+<style>
+body {
+    background-image: url(assets/tran.png);
+    background-size: cover;
+    background-repeat: no-repeat; 
+    background-attachment:fixed;
+
+}
+</style>
+
 <h:body style="background-color: #eee; margin: 0.5em;">
 
 	<p:panel toggleable="true" header="Edycja rekordu">
@@ -30,13 +40,13 @@
 				</p:inputText>
 				<p:message for="p-album_name" display="icon"/>
 
-				<h:outputLabel for="p-added_by_id" value="album dodany przez" />
-				<p:inputText id="p-added_by_id" value="#{albumEditBB.album.addedById}"
+				<h:outputLabel for="user" value="album dodany przez" />
+				<p:inputText id="p-user" value="#{albumEditBB.album.user}"
 					required="true" requiredMessage="podaj przez kogo dodany album"
 					validatorMessage="co najwyżej 40 znaków">
 					<f:validateLength maximum="40" />
 				</p:inputText>
-				<p:message for="p-added_by_id" display="icon"/>
+				<p:message for="p-user" display="icon"/>
 
 				
 				
