@@ -13,30 +13,19 @@
 
 <style>
 body {
-    background-image: url(assets/tran.png);
+    background-image: url(http://localhost:8080/Projekt_WEB/assets/tran.png);
     background-size: cover;
     background-repeat: no-repeat; 
     background-attachment:fixed;
-
 }
 </style>
 
 <h:body style="background-color: #eee; margin: 0.5em;">
 
-	<p:panel header="Opcje wyszukiwania" toggleable="true" collapsed="true"
-		style="margin-bottom: 1em;">
-		<h:form>
-			<h:panelGrid columns="2" cellpadding="5">
-				<h:outputLabel value="id zespołu:" />
-				<p:inputText value="#{commentListBB.comment}" />
-				<p:commandButton value="Szukaj" update="form-table" />
-			</h:panelGrid>
-		</h:form>
-	</p:panel>
-
 	<p:messages />
 
 	<h:form id="form-table" style="margin-bottom:1em;">
+
 
 		<p:commandButton value="Dodaj nową osobę"
 			action="#{userListBB.newUser()}" style="margin-bottom:1em;"/>
@@ -53,26 +42,32 @@ body {
 		<p:commandButton value="Dodaj nowy zespół"
 			action="#{bandListBB.newBand()}" style="margin-bottom:1em;"/>							
 
-		<p:dataTable value="#{commentListBB.list}" var="p" filterEvent="" >
-			
-			<p:column headerText="Komentarz" sortBy="#{p.comment}" >
+		<p:dataTable value="#{commentListBB.list}" var="p">
+
+			<p:column headerText="Komentarz" sortBy="#{p.comment}" filterBy="#{p.comment}">
 				<h:outputText value="#{p.comment}" />
 			</p:column>
 
-			<p:column headerText="Dodany przez" sortBy="#{p.user1}" >
+			<p:column headerText="Dodany przez" sortBy="#{p.user1}" filterBy="#{p.user1}">
 				<h:outputText value="#{p.user1}" />
 			</p:column>
 			
-			<p:column headerText="Data dodania" sortBy="#{p.postDate}" >
+			<p:column headerText="Data dodania" sortBy="#{p.postDate}" filterBy="#{p.postDate}">
 				<h:outputText value="#{p.postDate}" />
 			</p:column>
-
-			<p:column headerText="Id zespołu" sortBy="#{p.band2}" filterBy="#{p.band2}" filterValue="1"  >
-			<p:autoUpdate  />
-				<h:outputText value="#{p.band2}" />
-				
+			
+			<p:column headerText="Id piosenki" sortBy="#{p.song1}" filterBy="#{p.song1}">
+				<h:outputText value="#{p.song1}" />
 			</p:column>
-
+			
+			<p:column headerText="Id albumu" sortBy="#{p.album2}" filterBy="#{p.album2}">
+				<h:outputText value="#{p.album2}" />
+			</p:column>
+			
+			<p:column headerText="Id autora" sortBy="#{p.band2}" filterBy="#{p.band2}">
+				<h:outputText value="#{p.band2}" />
+			</p:column>
+			
 			<p:column>
 				<f:facet name="header">
 					<h:outputText value="opcje" />
@@ -86,9 +81,6 @@ body {
 
 			</p:column>
 
-		</p:dataTable>
-		
-		<p:dataTable value="#{commentListBB.list}" var="p" filterEvent="" >
 		</p:dataTable>
 	</h:form>
 

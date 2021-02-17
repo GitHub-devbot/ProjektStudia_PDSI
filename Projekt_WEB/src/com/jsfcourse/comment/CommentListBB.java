@@ -20,8 +20,8 @@ import jsf.projekt.Band;
 @Named
 @RequestScoped
 public class CommentListBB {
-	private static final String PAGE_COMMENT_EDIT = "commentEdit?faces-redirect=true";
-	private static final String PAGE_COMMENTS_BAND = "commentsBand?faces-redirect=true";
+	private static final String PAGE_COMMENT_EDIT = "/pages/user/commentEdit?faces-redirect=true";
+	private static final String PAGE_COMMENTS_BAND = "/pages/user/commentsBand?faces-redirect=true";
 	private static final String PAGE_STAY_AT_THE_SAME = null;
 
 	private String comment;

@@ -19,7 +19,7 @@ import jsf.projekt.Album;
 @Named
 @RequestScoped
 public class AlbumListBB {
-	private static final String PAGE_ALBUM_EDIT = "albumEdit?faces-redirect=true";
+	private static final String PAGE_ALBUM_EDIT = "/pages/user/albumEdit?faces-redirect=true";
 	private static final String PAGE_STAY_AT_THE_SAME = null;
 
 	private String name;

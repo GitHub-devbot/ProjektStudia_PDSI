@@ -7,7 +7,7 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <f:metadata>
-    <f:viewAction action="#{bandEditBB.onLoad()}" />
+    <f:viewAction action="#{albumEditBB.onLoad()}" />
 </f:metadata>
 
 <h:head>
@@ -17,7 +17,7 @@
 
 <style>
 body {
-    background-image: url(assets/tran.png);
+    background-image: url(http://localhost:8080/Projekt_WEB/assets/tran.png);
     background-size: cover;
     background-repeat: no-repeat; 
     background-attachment:fixed;
@@ -29,20 +29,20 @@ body {
 
 	<p:panel toggleable="true" header="Edycja rekordu">
 
-		<h:form rendered="#{bandEditBB.band != null}">
+		<h:form rendered="#{albumEditBB.album != null}">
 			<h:panelGrid columns="3" cellpadding="5">
 
-				<h:outputLabel for="p-band_name" value="nazwa zespołu" />
-				<p:inputText id="p-band_name" value="#{bandEditBB.band.bandName}"
-					required="true" requiredMessage="Podaj zespół"
+				<h:outputLabel for="p-album_name" value="nazwa albumu" />
+				<p:inputText id="p-album_name" value="#{albumEditBB.album.albumName}"
+					required="true" requiredMessage="Podaj autora"
 					validatorMessage="co najwyżej 40 znaków">
 					<f:validateLength maximum="40" />
 				</p:inputText>
-				<p:message for="p-band_name" display="icon"/>
+				<p:message for="p-album_name" display="icon"/>
 
-				<h:outputLabel for="p-user" value="zespół dodany przez" />
-				<p:inputText id="p-user" value="#{bandEditBB.band.user}"
-					required="true" requiredMessage="Podaj przez kogo dodany zespół"
+				<h:outputLabel for="user" value="album dodany przez" />
+				<p:inputText id="p-user" value="#{albumEditBB.album.user}"
+					required="true" requiredMessage="podaj przez kogo dodany album"
 					validatorMessage="co najwyżej 40 znaków">
 					<f:validateLength maximum="40" />
 				</p:inputText>
@@ -53,10 +53,10 @@ body {
 			</h:panelGrid>
 			<p:messages id="msgs" />
 
-			<p:commandButton value="Zapisz" action="#{bandEditBB.saveData()}"
+			<p:commandButton value="Zapisz" action="#{albumEditBB.saveData()}"
 				style="margin-right: 1em;" update="@form" />
 
-			<p:button value="Anuluj" outcome="bandList" />
+			<p:button value="Anuluj" outcome="albumList" />
 		</h:form>
 
 	</p:panel>

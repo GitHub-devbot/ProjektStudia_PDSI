@@ -19,7 +19,7 @@ import jsf.projekt.Band;
 @Named
 @RequestScoped
 public class BandListBB {
-	private static final String PAGE_BAND_EDIT = "bandEdit?faces-redirect=true";
+	private static final String PAGE_BAND_EDIT = "/pages/user/bandEdit?faces-redirect=true";
 	private static final String PAGE_STAY_AT_THE_SAME = null;
 
 	private String name;

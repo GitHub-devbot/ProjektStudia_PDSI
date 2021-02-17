@@ -19,7 +19,7 @@ import jsf.projekt.Song;
 @Named
 @RequestScoped
 public class SongListBB {
-	private static final String PAGE_SONG_EDIT = "songEdit?faces-redirect=true";
+	private static final String PAGE_SONG_EDIT = "/pages/user/songEdit?faces-redirect=true";
 	private static final String PAGE_STAY_AT_THE_SAME = null;
 
 	private String name;

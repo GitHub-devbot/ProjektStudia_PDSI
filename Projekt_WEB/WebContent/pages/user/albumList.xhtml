@@ -13,7 +13,7 @@
 
 <style>
 body {
-    background-image: url(assets/tran.png);
+    background-image: url(http://localhost:8080/Projekt_WEB/assets/tran.png);
     background-size: cover;
     background-repeat: no-repeat; 
     background-attachment:fixed;
@@ -22,17 +22,6 @@ body {
 </style>
 
 <h:body style="background-color: #eee; margin: 0.5em;">
-
-	<p:panel header="Opcje wyszukiwania" toggleable="true" collapsed="true"
-		style="margin-bottom: 1em;">
-		<h:form>
-			<h:panelGrid columns="2" cellpadding="5">
-				<h:outputLabel value="login:" />
-				<p:inputText value="#{userListBB.userLogin}" />
-				<p:commandButton value="Szukaj" update="form-table" />
-			</h:panelGrid>
-		</h:form>
-	</p:panel>
 
 	<p:messages />
 
@@ -48,27 +37,23 @@ body {
 			action="#{albumListBB.newAlbum()}" style="margin-bottom:1em;"/>		
 			
 		<p:commandButton value="Dodaj nowy komentarz"
-			action="#{commentListBB.newComment()}" style="margin-bottom:1em;"/>		
+			action="#{commentListBB.newComment()}" style="margin-bottom:1em;"/>	
 			
 		<p:commandButton value="Dodaj nowy zespół"
 			action="#{bandListBB.newBand()}" style="margin-bottom:1em;"/>					
 
-		<p:dataTable value="#{userListBB.list}" var="p">
+		<p:dataTable value="#{albumListBB.list}" var="p">
 
-			<p:column headerText="Login" sortBy="#{p.userLogin}" filterBy="#{p.userLogin}">
-				<h:outputText value="#{p.userLogin}" />
+			<p:column headerText="Nazwa albumu" sortBy="#{p.albumName}" filterBy="#{p.albumName}">
+				<h:outputText value="#{p.albumName}" />
 			</p:column>
 			
-			<p:column headerText="Hasło" sortBy="#{p.userPassword}" filterBy="#{p.userPassword}">
-				<h:outputText value="#{p.userPassword}" />
+			<p:column headerText="Dodany przez id" sortBy="#{p.user}" filterBy="#{p.user}">
+				<h:outputText value="#{p.user}" />
 			</p:column>
 			
-			<p:column headerText="Rola" sortBy="#{p.userRole}" filterBy="#{p.userRole}">
-				<h:outputText value="#{p.userRole}" />
-			</p:column>
-			
-			<p:column headerText="Id" sortBy="#{p.userId}" filterBy="#{p.userId}">
-				<h:outputText value="#{p.userId}" />
+			<p:column headerText="Id albumu" sortBy="#{p.albumId}" filterBy="#{p.salbumId}">
+				<h:outputText value="#{p.albumId}" />
 			</p:column>
 
 			<p:column>
@@ -77,17 +62,18 @@ body {
 				</f:facet>
 
 				<p:commandButton value="Edytuj"
-					action="#{userListBB.editUser(p)}" />
+					action="#{albumListBB.editAlbum(p)}" />
 
 				<p:commandButton value="Usuń"
-					action="#{userListBB.deleteUser(p)}" update="@form" />
+					action="#{albumListBB.deleteAlbum(p)}" update="@form" />
+					
+				<p:commandButton value="Komentarze"
+					action="#{commentListBB.albumComments(p)}" />
 
-			</p:column>			
-            
+			</p:column>
+
 		</p:dataTable>
-		</h:form>
-		
-	
+	</h:form>
 
 </h:body>
 </html>

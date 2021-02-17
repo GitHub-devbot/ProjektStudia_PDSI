@@ -20,7 +20,7 @@ import jsf.projekt.Comment;
 public class CommentEditBB implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private static final String PAGE_COMMENT_LIST = "commentList?faces-redirect=true";
+	private static final String PAGE_COMMENT_LIST = "/pages/user/commentList?faces-redirect=true";
 	private static final String PAGE_STAY_AT_THE_SAME = null;
 
 	private Comment comment = new Comment();

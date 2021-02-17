@@ -20,7 +20,7 @@ import jsf.projekt.Song;
 public class SongEditBB implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private static final String PAGE_SONG_LIST = "songList?faces-redirect=true";
+	private static final String PAGE_SONG_LIST = "/pages/user/songList?faces-redirect=true";
 	private static final String PAGE_STAY_AT_THE_SAME = null;
 
 	private Song song = new Song();

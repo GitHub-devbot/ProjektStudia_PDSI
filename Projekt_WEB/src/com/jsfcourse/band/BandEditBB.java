@@ -20,7 +20,7 @@ import jsf.projekt.Band;
 public class BandEditBB implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private static final String PAGE_BAND_LIST = "bandList?faces-redirect=true";
+	private static final String PAGE_BAND_LIST = "/pages/user/bandList?faces-redirect=true";
 	private static final String PAGE_STAY_AT_THE_SAME = null;
 
 	private Band band = new Band();

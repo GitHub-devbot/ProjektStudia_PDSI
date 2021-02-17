@@ -20,7 +20,7 @@ import jsf.projekt.Album;
 public class AlbumEditBB implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private static final String PAGE_ALBUM_LIST = "albumList?faces-redirect=true";
+	private static final String PAGE_ALBUM_LIST = "/pages/user/albumList?faces-redirect=true";
 	private static final String PAGE_STAY_AT_THE_SAME = null;
 
 	private Album album = new Album();
