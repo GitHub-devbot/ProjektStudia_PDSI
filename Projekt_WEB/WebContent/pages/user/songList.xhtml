@@ -11,36 +11,20 @@
 	<title>Projekt - PDSI</title>
 </h:head>
 
-<style>
-body {
-    background-image: url(http://localhost:8080/Projekt_WEB/assets/tran.png);
-    background-size: cover;
-    background-repeat: no-repeat; 
-    background-attachment:fixed;
+<ui:composition template="/templates/page-template.xhtml">
 
-}
-</style>
+	<ui:define name="pageContent">
 
 <h:body style="background-color: #eee; margin: 0.5em;">
+
+<h:form id="button" style="margin-bottom:0em;">
+		<p:commandButton value="Dodaj nowy utwór"
+			action="#{songListBB.newSong()}" style="margin-bottom:0em;"/>
+			</h:form>
 
 	<p:messages />
 
 	<h:form id="form-table" style="margin-bottom:1em;">
-
-		<p:commandButton value="Dodaj nową osobę"
-			action="#{userListBB.newUser()}" style="margin-bottom:1em;"/>
-		
-		<p:commandButton value="Dodaj nowy utwór"
-			action="#{songListBB.newSong()}" style="margin-bottom:1em;"/>	
-			
-		<p:commandButton value="Dodaj nowy album"
-			action="#{albumListBB.newAlbum()}" style="margin-bottom:1em;"/>			
-			
-		<p:commandButton value="Dodaj nowy komentarz"
-			action="#{commentListBB.newComment()}" style="margin-bottom:1em;"/>	
-			
-		<p:commandButton value="Dodaj nowy zespół"
-			action="#{bandListBB.newBand()}" style="margin-bottom:1em;"/>					
 
 		<p:dataTable value="#{songListBB.list}" var="p">
 
@@ -83,11 +67,15 @@ body {
 					
 				<p:commandButton value="Komentuj"
 					action="#{songListBB.commentSong(p)}" />
-
+<h:outputText
+		value="Zalogowany: #{remoteClient.details.userLogin} #{remoteClient.details.userPassword}" />
 			</p:column>
-
 		</p:dataTable>
-	</h:form>
-
+		</h:form>
 </h:body>
+
+
+</ui:define>
+</ui:composition>
+
 </html>

@@ -15,7 +15,7 @@
 	<title>Projekt - PDSI</title>
 </h:head>
 
-<style>
+<style type="text/css">
 body {
     background-image: url(http://localhost:8080/Projekt_WEB/assets/tran.png);
     background-size: cover;
@@ -25,12 +25,14 @@ body {
 }
 </style>
 
-<h:body style="background-color: #eee; margin: 0.5em;">
+
+
+<h:body style="background-color: #eee; margin: 0.5em;" >
 
 	<p:panel toggleable="true" header="Logowanie">
 
 		<h:form>
-			<h:panelGrid columns="2" cellpadding="5">
+			<h:panelGrid columns="2" cellpadding="5" header="Logowanie">
 				<h:outputLabel for="login" value="login:" />
 				<h:inputText id="login" value="#{loginBB.login}"				
 					required="true"	requiredMessage="podaj login"/>

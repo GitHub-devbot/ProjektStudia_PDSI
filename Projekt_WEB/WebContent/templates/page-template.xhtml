@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<ui:composition template="/templates/main-template.xhtml">
+
+	<ui:define name="title">
+		MusiCurious
+	</ui:define>
+
+	<ui:define name="content">
+
+		<p:panel header="Witaj!!!" styleClass="bottom-space">Witaj w Musicurious, konkurencie Spotify</p:panel>
+
+<h:form id="buttons" style="margin-bottom:0em;">
+		<p:button value="Lista użytkowników" outcome="/pages/admin/userList" />	
+		
+		<p:button value="Lista utworów" outcome="/pages/user/songList" />
+			
+		<p:button value="Lista albumów" outcome="/pages/user/albumList" />	
+			
+		<p:button value="Lista komentarzy" outcome="/pages/user/commentList" />	
+			
+		<p:button value="Lista zespołów" outcome="/pages/user/bandList" />			
+			
+		<p:commandButton value="Wyloguj"
+			action="#{loginBB.doLogout()}" style="margin-bottom:0.5em;"/>				
+</h:form>
+
+		<ui:insert name="pageContent"></ui:insert>
+
+	</ui:define>
+	
+</ui:composition>
+</html>

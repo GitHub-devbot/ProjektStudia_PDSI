@@ -1,0 +1,29 @@
+body{
+	font-family: 'Century Gothic',helvetica,verdana,arial;
+	background: url("http://localhost:8080/Projekt_WEB/assets/tran.png") no-repeat center center fixed;
+	background-size: cover;
+	margin:0;
+}
+
+.bottom-space{
+	margin-bottom: 0.5em;
+}
+
+.top-space{
+	margin-top: 0.5em;
+}
+
+.ui-panel
+{
+     opacity:0.95;         
+}
+
+.ui-panel-content{
+background:red;
+}
+
+#page_wrapper{
+	margin: 11.5em;
+	min-width: 500px;
+}
+

@@ -1,10 +1,14 @@
 package com.jsfcourse.login;
 
 import java.util.List;
+import java.io.IOException;
+import java.io.Serializable;
 
+import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.faces.context.Flash;
 import javax.faces.simplesecurity.RemoteClient;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -17,12 +21,21 @@ import jsf.projekt.User;
 @Named
 @RequestScoped
 public class LoginBB {
-	private static final String PAGE_MAIN = "/pages/user/songEdit?faces-redirect=true";
+	private static final String PAGE_MAIN = "/pages/user/songList?faces-redirect=true";
 	private static final String PAGE_LOGIN = "/pages/public/login";
 	private static final String PAGE_STAY_AT_THE_SAME = null;
 
 	private String login;
 	private String pass;
+	
+	@EJB
+	userDAO userDAO;
+
+	@Inject
+	FacesContext context;
+
+	@Inject
+	Flash flash;
 
 	public String getLogin() {
 		return login;
@@ -40,14 +53,11 @@ public class LoginBB {
 		this.pass = pass;
 	}
 
-	@EJB
-	UserDAO userDAO;
-
 	public String doLogin() {
 		FacesContext ctx = FacesContext.getCurrentInstance();
 
 		// 1. verify login and password - get User from "database"
-		User user = userDAO.getUserFromDatabase(login, pass);
+		User user = userDAO.getUser(login,pass);
 
 		// 2. if bad login or password - stay with error info
 		if (user == null) {
@@ -61,14 +71,15 @@ public class LoginBB {
 		RemoteClient<User> client = new RemoteClient<User>(); //create new RemoteClient
 		client.setDetails(user);
 		
-		List<String> roles = userDAO.getUserRolesFromDatabase(user); //get User roles 
+//		List<String> roles = userDAO.getUserRolesFromDatabase(user); //get User roles 
+//		
+//		if (roles != null) { //save roles in RemoteClient
+//			for (String role: roles) {
+//				client.getRoles().add(role);
+//			}
+//		}
+		client.getRoles().add(user.getUserRole());
 		
-		if (roles != null) { //save roles in RemoteClient
-			for (String role: roles) {
-				client.getRoles().add(role);
-			}
-		}
-	
 		//store RemoteClient with request info in session (needed for SecurityFilter)
 		HttpServletRequest request = (HttpServletRequest) ctx.getExternalContext().getRequest();
 		client.store(request);

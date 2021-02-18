@@ -28,6 +28,7 @@
 			<param-name>permissions</param-name>
 			<param-value>
 /javax.faces.resource : PUBLIC;
+/assets : PUBLIC;
 /pages : admin;
 /pages/public : PUBLIC, user, admin;
 /pages/admin : admin;

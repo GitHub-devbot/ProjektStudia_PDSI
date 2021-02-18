@@ -15,16 +15,9 @@
 	<title>Projekt - PDSI</title>
 </h:head>
 
-<style>
-body {
-    background-image: url(http://localhost:8080/Projekt_WEB/assets/tran.png);
-    background-size: cover;
-    background-repeat: no-repeat; 
-    background-attachment:fixed;
+<ui:composition template="/templates/page-template.xhtml">
 
-}
-</style>
-
+	<ui:define name="pageContent">
 <h:body style="background-color: #eee; margin: 0.5em;">
 
 	<p:panel toggleable="true" header="Edycja rekordu">
@@ -79,5 +72,6 @@ body {
 	</p:panel>
 
 </h:body>
-
+</ui:define>
+</ui:composition>
 </html>

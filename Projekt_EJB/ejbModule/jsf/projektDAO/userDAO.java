@@ -87,5 +87,17 @@ public List<User> getList(Map<String, Object> searchParams) {
 
 	return list;
 }
+public User getUser(String login,String pass) {
+	User user = new User();
+
+	if(login.equals("login")&&pass.equals("haslo")) {
+		user = find(11);	
+	}
+	if(login.equals("grzesiu")&&pass.equals("haha")) {
+		user = find(12);	
+	}
+	
+	return user;
+}
 
 }

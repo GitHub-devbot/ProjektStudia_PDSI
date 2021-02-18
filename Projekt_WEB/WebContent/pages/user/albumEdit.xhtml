@@ -14,16 +14,9 @@
 	<meta charset="utf-8"/>
 	<title>Projekt - PDSI</title>
 </h:head>
+<ui:composition template="/templates/page-template.xhtml">
 
-<style>
-body {
-    background-image: url(http://localhost:8080/Projekt_WEB/assets/tran.png);
-    background-size: cover;
-    background-repeat: no-repeat; 
-    background-attachment:fixed;
-
-}
-</style>
+	<ui:define name="pageContent">
 
 <h:body style="background-color: #eee; margin: 0.5em;">
 
@@ -41,7 +34,7 @@ body {
 				<p:message for="p-album_name" display="icon"/>
 
 				<h:outputLabel for="user" value="album dodany przez" />
-				<p:inputText id="p-user" value="#{albumEditBB.album.user}"
+				<p:inputText id="p-user" value="#{remoteClient.details}"
 					required="true" requiredMessage="podaj przez kogo dodany album"
 					validatorMessage="co najwyżej 40 znaków">
 					<f:validateLength maximum="40" />
@@ -62,5 +55,6 @@ body {
 	</p:panel>
 
 </h:body>
-
+</ui:define>
+</ui:composition>
 </html>
