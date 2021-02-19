@@ -30,8 +30,8 @@
 				<h:outputText value="#{p.bandName}" />
 			</p:column>
 			
-			<p:column headerText="Dodany przez id" sortBy="#{p.user}" filterBy="#{p.user}">
-				<h:outputText value="#{p.user}" />
+			<p:column headerText="Dodany przez" sortBy="#{p.user.userLogin}" filterBy="#{p.user.userLogin}">
+				<h:outputText value="#{p.user.userLogin}" />
 			</p:column>
 			
 			<p:column headerText="Id zespołu" sortBy="#{p.bandId}" filterBy="#{p.bandId}">
@@ -49,8 +49,13 @@
 				<p:commandButton value="Usuń"
 					action="#{bandListBB.deleteBand(p)}" update="@form" />				
 					
+				<p:commandButton value="Dodaj Album"
+					action="#{albumListBB.addAlbum(p)}" />		
+					
 		  		<p:commandButton value="Komentarze"
 					action="#{commentListBB.commentsBand(p)}" />
+					
+					
 			</p:column>
 
 		</p:dataTable>

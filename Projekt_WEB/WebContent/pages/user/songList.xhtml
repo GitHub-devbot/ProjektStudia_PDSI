@@ -68,7 +68,7 @@
 				<p:commandButton value="Komentuj"
 					action="#{songListBB.commentSong(p)}" />
 <h:outputText
-		value="Zalogowany: #{remoteClient.details.userLogin} #{remoteClient.details.userPassword}" />
+		value="Zalogowany: #{remoteClient.details} #{remoteClient.details.userRole}" />
 			</p:column>
 		</p:dataTable>
 		</h:form>

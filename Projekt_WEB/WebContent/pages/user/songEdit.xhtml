@@ -26,7 +26,7 @@
 			<h:panelGrid columns="3" cellpadding="5">
 
 				<h:outputLabel for="p-band" value="zespół" />
-				<p:inputText id="p-band" value="#{songEditBB.song.band}"
+				<p:inputText id="p-band" value="#{albumEditBB.album.band}"
 					validatorMessage="co najwyżej 40 znaków">
 					<f:validateLength maximum="40" />
 				</p:inputText>
@@ -47,14 +47,14 @@
 				<p:message for="p-song_url" display="icon"/>
 				
 				<h:outputLabel for="p-album2" value="id albumu" />
-				<p:inputText id="p-album2" value="#{songEditBB.song.album2}"
+				<p:inputText id="p-album2" value="#{albumEditBB.album}"
 					validatorMessage="co najwyżej 40 znaków">
 					<f:validateLength maximum="40" />
 				</p:inputText>
 				<p:message for="p-album2" display="icon"/>
 				
 				<h:outputLabel for="p-user1" value="dodane przez id" />
-				<p:inputText id="p-user1" value="#{songEditBB.song.user1}"
+				<p:inputText id="p-user1" value="#{remoteClient.details}"
 					validatorMessage="co najwyżej 40 znaków">
 					<f:validateLength maximum="40" />
 				</p:inputText>

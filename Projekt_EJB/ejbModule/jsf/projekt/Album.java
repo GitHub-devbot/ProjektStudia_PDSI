@@ -23,6 +23,11 @@ public class Album implements Serializable {
 	@Column(name="album_name")
 	private String albumName;
 
+	//bi-directional many-to-one association to Band
+	@ManyToOne
+	@JoinColumn(name="band_id")
+	private Band band;
+
 	//bi-directional one-to-one association to Comment
 	@OneToOne
 	@JoinColumn(name="album_id")
@@ -63,6 +68,14 @@ public class Album implements Serializable {
 
 	public void setAlbumName(String albumName) {
 		this.albumName = albumName;
+	}
+
+	public Band getBand() {
+		return this.band;
+	}
+
+	public void setBand(Band band) {
+		this.band = band;
 	}
 
 	public Comment getComment() {

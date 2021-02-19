@@ -40,6 +40,15 @@
 					<f:validateLength maximum="40" />
 				</p:inputText>
 				<p:message for="p-user" display="icon"/>
+				
+				<h:outputLabel for="band" value="zespół" />
+				<p:inputText id="p-band" value="#{bandEditBB.band}"
+					required="true" requiredMessage="jakiego zespołu album"
+					validatorMessage="co najwyżej 40 znaków">
+					<f:validateLength maximum="40" />
+				</p:inputText>
+				<p:message for="p-band" display="icon"/>
+				
 
 				
 				

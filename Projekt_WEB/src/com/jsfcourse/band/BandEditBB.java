@@ -10,6 +10,7 @@ import javax.faces.context.Flash;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.persistence.EntityManager;
 import javax.servlet.http.HttpSession;
 
 import jsf.projektDAO.bandDAO;
@@ -39,7 +40,9 @@ public class BandEditBB implements Serializable {
 		return band;
 	}
 
+	
 	public void onLoad() throws IOException {
+
 		// 1. load person passed through session
 		// HttpSession session = (HttpSession) context.getExternalContext().getSession(true);
 		// loaded = (Person) session.getAttribute("person");

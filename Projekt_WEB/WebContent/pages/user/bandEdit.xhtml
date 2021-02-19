@@ -33,13 +33,12 @@
 				<p:message for="p-band_name" display="icon"/>
 
 				<h:outputLabel for="p-user" value="zespół dodany przez" />
-				<p:inputText id="p-user" value="#{bandEditBB.band.user}"
+				<p:inputText id="p-user" value="#{remoteClient.details}"
 					required="true" requiredMessage="Podaj przez kogo dodany zespół"
 					validatorMessage="co najwyżej 40 znaków">
 					<f:validateLength maximum="40" />
 				</p:inputText>
 				<p:message for="p-user" display="icon"/>
-
 				
 				
 			</h:panelGrid>

@@ -18,14 +18,12 @@
 
 <h:form id="buttons" style="margin-bottom:0em;">
 		<p:button value="Lista użytkowników" outcome="/pages/admin/userList" />	
-		
-		<p:button value="Lista utworów" outcome="/pages/user/songList" />
+		<p:button value="Lista zespołów" outcome="/pages/user/bandList" />	
+		<p:button value="Lista albumów" outcome="/pages/user/albumList" />		
+		<p:button value="Lista utworów" outcome="/pages/user/songList" />						
+		<p:button value="Lista wszystkich komentarzy" outcome="/pages/user/commentList" />	
 			
-		<p:button value="Lista albumów" outcome="/pages/user/albumList" />	
-			
-		<p:button value="Lista komentarzy" outcome="/pages/user/commentList" />	
-			
-		<p:button value="Lista zespołów" outcome="/pages/user/bandList" />			
+	
 			
 		<p:commandButton value="Wyloguj"
 			action="#{loginBB.doLogout()}" style="margin-bottom:0.5em;"/>				

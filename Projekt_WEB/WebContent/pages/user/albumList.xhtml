@@ -30,12 +30,16 @@
 				<h:outputText value="#{p.albumName}" />
 			</p:column>
 			
-			<p:column headerText="Dodany przez id" sortBy="#{p.user}" filterBy="#{p.user}">
-				<h:outputText value="#{p.user}" />
+			<p:column headerText="Dodany przez id" sortBy="#{p.user.userLogin}" filterBy="#{p.user.userLogin}">
+				<h:outputText value="#{p.user.userLogin}" />
 			</p:column>
 			
-			<p:column headerText="Id albumu" sortBy="#{p.albumId}" filterBy="#{p.salbumId}">
+			<p:column headerText="Id albumu" sortBy="#{p.albumId}" filterBy="#{p.albumId}">
 				<h:outputText value="#{p.albumId}" />
+			</p:column>
+			
+			<p:column headerText="Album zespołu" sortBy="#{p.band.bandName}" filterBy="#{p.band.bandName}">
+				<h:outputText value="#{p.band.bandName}" />
 			</p:column>
 
 			<p:column>
@@ -48,6 +52,9 @@
 
 				<p:commandButton value="Usuń"
 					action="#{albumListBB.deleteAlbum(p)}" update="@form" />
+					
+				<p:commandButton value="Dodaj utwór"
+					action="#{songListBB.addSong(p)}" />	
 					
 				<p:commandButton value="Komentarze"
 					action="#{commentListBB.albumComments(p)}" />

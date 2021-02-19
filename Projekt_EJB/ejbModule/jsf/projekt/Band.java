@@ -23,6 +23,10 @@ public class Band implements Serializable {
 	@Column(name="band_name")
 	private String bandName;
 
+	//bi-directional many-to-one association to Album
+	@OneToMany(mappedBy="band")
+	private List<Album> albums;
+
 	//bi-directional one-to-one association to Comment
 	@OneToOne
 	@JoinColumn(name="band_id")
@@ -58,6 +62,28 @@ public class Band implements Serializable {
 
 	public void setBandName(String bandName) {
 		this.bandName = bandName;
+	}
+
+	public List<Album> getAlbums() {
+		return this.albums;
+	}
+
+	public void setAlbums(List<Album> albums) {
+		this.albums = albums;
+	}
+
+	public Album addAlbum(Album album) {
+		getAlbums().add(album);
+		album.setBand(this);
+
+		return album;
+	}
+
+	public Album removeAlbum(Album album) {
+		getAlbums().remove(album);
+		album.setBand(null);
+
+		return album;
 	}
 
 	public Comment getComment() {

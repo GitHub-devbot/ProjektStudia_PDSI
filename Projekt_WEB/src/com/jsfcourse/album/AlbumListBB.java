@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import jsf.projektDAO.albumDAO;
 import jsf.projekt.Album;
+import jsf.projekt.Band;
 
 @Named
 @RequestScoped
@@ -81,6 +82,13 @@ public class AlbumListBB {
 		
 		//2. Pass object through flash 
 		flash.put("album", album);
+		
+		return PAGE_ALBUM_EDIT;
+	}
+	
+	public String addAlbum(Band band){
+
+		flash.put("band", band);
 		
 		return PAGE_ALBUM_EDIT;
 	}
