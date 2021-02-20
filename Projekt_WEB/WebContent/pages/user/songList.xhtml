@@ -17,11 +17,6 @@
 
 <h:body style="background-color: #eee; margin: 0.5em;">
 
-<h:form id="button" style="margin-bottom:0em;">
-		<p:commandButton value="Dodaj nowy utwór"
-			action="#{songListBB.newSong()}" style="margin-bottom:0em;"/>
-			</h:form>
-
 	<p:messages />
 
 	<h:form id="form-table" style="margin-bottom:1em;">
@@ -32,29 +27,29 @@
 				<h:outputText value="#{p.songName}" />
 			</p:column>
 
-			<p:column headerText="Autor utworu" sortBy="#{p.band}" filterBy="#{p.band}">
-				<h:outputText value="#{p.band}" />
+			<p:column headerText="Autor utworu" sortBy="#{p.band.bandName}" filterBy="#{p.band.bandName}">
+				<h:outputText value="#{p.band.bandName}" />
 			</p:column>
 			
-			<p:column headerText="Adres utworu" sortBy="#{p.songUrl}" filterBy="#{p.songUrl}">
+			<p:column headerText="Utwór" sortBy="#{p.songUrl}" style="width:300px">
 				<audio controls="controls">
 				<source src="#{p.songUrl}"></source>
 				</audio>
 			</p:column>
 			
-			<p:column headerText="Id albumu" sortBy="#{p.album2}" filterBy="#{p.album2}">
-				<h:outputText value="#{p.album2}" />
+			<p:column headerText="Nazwa Albumu" sortBy="#{p.album2.albumName}" filterBy="#{p.album2.albumName}" >
+				<h:outputText value="#{p.album2.albumName}" />
 			</p:column>
 			
-			<p:column headerText="Dodany przez Id" sortBy="#{p.user1}" filterBy="#{p.user1}">
-				<h:outputText value="#{p.user1}" />
+			<p:column headerText="Dodany przez " sortBy="#{p.user1.userLogin}" filterBy="#{p.user1.userLogin}">
+				<h:outputText value="#{p.user1.userLogin}" />
 			</p:column>		
 			
 			<p:column headerText="Id utworu" sortBy="#{p.songId}" filterBy="#{p.songId}">			
 				<h:outputText value="#{p.songId}" />
 			</p:column>					
 
-			<p:column>
+			<p:column style="width:400px">
 				<f:facet name="header">
 					<h:outputText value="opcje" />
 				</f:facet>
@@ -67,8 +62,6 @@
 					
 				<p:commandButton value="Komentuj"
 					action="#{songListBB.commentSong(p)}" />
-<h:outputText
-		value="Zalogowany: #{remoteClient.details} #{remoteClient.details.userRole}" />
 			</p:column>
 		</p:dataTable>
 		</h:form>

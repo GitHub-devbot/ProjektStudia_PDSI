@@ -15,12 +15,7 @@
 	<ui:define name="pageContent">
 
 <h:body style="background-color: #eee; margin: 0.5em;">
-
-<h:form id="button" style="margin-bottom:0em;">
-		<p:commandButton value="Dodaj nowy album"
-			action="#{albumListBB.newAlbum()}" style="margin-bottom:0em;"/>
-			</h:form>
-			
+		
 	<p:messages />
 
 	<h:form id="form-table" style="margin-bottom:1em;">
@@ -30,7 +25,11 @@
 				<h:outputText value="#{p.albumName}" />
 			</p:column>
 			
-			<p:column headerText="Dodany przez id" sortBy="#{p.user.userLogin}" filterBy="#{p.user.userLogin}">
+			<p:column headerText="Album zespołu" sortBy="#{p.band.bandName}" filterBy="#{p.band.bandName}">
+				<h:outputText value="#{p.band.bandName}" />
+			</p:column>
+			
+			<p:column headerText="Dodany przez " sortBy="#{p.user.userLogin}" filterBy="#{p.user.userLogin}">
 				<h:outputText value="#{p.user.userLogin}" />
 			</p:column>
 			
@@ -38,11 +37,9 @@
 				<h:outputText value="#{p.albumId}" />
 			</p:column>
 			
-			<p:column headerText="Album zespołu" sortBy="#{p.band.bandName}" filterBy="#{p.band.bandName}">
-				<h:outputText value="#{p.band.bandName}" />
-			</p:column>
 
-			<p:column>
+
+			<p:column style="width:400px">
 				<f:facet name="header">
 					<h:outputText value="opcje" />
 				</f:facet>
@@ -54,7 +51,7 @@
 					action="#{albumListBB.deleteAlbum(p)}" update="@form" />
 					
 				<p:commandButton value="Dodaj utwór"
-					action="#{songListBB.addSong(p)}" />	
+					action="#{songListBB.newSong(remoteClient.details.userId, p)}" />	
 					
 				<p:commandButton value="Komentarze"
 					action="#{commentListBB.albumComments(p)}" />

@@ -17,7 +17,7 @@
 
 <h:form id="button" style="margin-bottom:0em;">
 		<p:commandButton value="Dodaj nowy zespół"
-			action="#{bandListBB.newBand()}" style="margin-bottom:0em;"/>
+			action="#{bandListBB.newBand(remoteClient.details.userId)}" style="margin-bottom:0em;"/>
 			</h:form>
 			
 	<p:messages />
@@ -38,7 +38,7 @@
 				<h:outputText value="#{p.bandId}" />
 			</p:column>
 
-			<p:column>
+			<p:column style="width:400px">
 				<f:facet name="header">
 					<h:outputText value="opcje" />
 				</f:facet>
@@ -50,7 +50,7 @@
 					action="#{bandListBB.deleteBand(p)}" update="@form" />				
 					
 				<p:commandButton value="Dodaj Album"
-					action="#{albumListBB.addAlbum(p)}" />		
+					action="#{albumListBB.newAlbum(remoteClient.details.userId, p)}" />		
 					
 		  		<p:commandButton value="Komentarze"
 					action="#{commentListBB.commentsBand(p)}" />

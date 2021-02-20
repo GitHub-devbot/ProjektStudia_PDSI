@@ -14,8 +14,11 @@ import javax.faces.context.Flash;
 import javax.servlet.http.HttpSession;
 
 import jsf.projektDAO.albumDAO;
+import jsf.projektDAO.bandDAO;
 import jsf.projekt.Album;
 import jsf.projekt.Band;
+import jsf.projekt.User;
+import jsf.projektDAO.userDAO;
 
 @Named
 @RequestScoped
@@ -33,6 +36,10 @@ public class AlbumListBB {
 	
 	@EJB
 	albumDAO albumDAO;
+	@EJB
+	bandDAO bandDAO;
+	@EJB
+	userDAO userDAO;
 		
 	public String getalbumName() {
 		return name;
@@ -62,7 +69,7 @@ public class AlbumListBB {
 		return list;
 	}
 	
-	public String newAlbum(){
+	public String newAlbum(Integer uzytkownik, Band zespol){
 		Album album = new Album();
 		
 		//1. Pass object through session
@@ -71,7 +78,8 @@ public class AlbumListBB {
 		
 		//2. Pass object through flash	
 		flash.put("album", album);
-		
+		album.setBand(zespol);
+		album.setUser(userDAO.find(uzytkownik));
 		return PAGE_ALBUM_EDIT;
 	}
 

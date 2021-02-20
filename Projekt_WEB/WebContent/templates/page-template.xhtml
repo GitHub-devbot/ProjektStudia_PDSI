@@ -14,7 +14,7 @@
 
 	<ui:define name="content">
 
-		<p:panel header="Witaj!!!" styleClass="bottom-space">Witaj w Musicurious, konkurencie Spotify</p:panel>
+		<p:panel header="Witaj #{remoteClient.details.userLogin}, Twoja rola to #{remoteClient.details.userRole}" styleClass="bottom-space">Musicurious to największy konkurent Spotify! Miłej zabawy!</p:panel>
 
 <h:form id="buttons" style="margin-bottom:0em;">
 		<p:button value="Lista użytkowników" outcome="/pages/admin/userList" />	

@@ -25,12 +25,6 @@
 		<h:form rendered="#{songEditBB.song != null}">
 			<h:panelGrid columns="3" cellpadding="5">
 
-				<h:outputLabel for="p-band" value="zespół" />
-				<p:inputText id="p-band" value="#{albumEditBB.album.band}"
-					validatorMessage="co najwyżej 40 znaków">
-					<f:validateLength maximum="40" />
-				</p:inputText>
-				<p:message for="p-band" display="icon"/>
 
 				<h:outputLabel for="p-song_name" value="nazwa" />
 				<p:inputText id="p-song_name" value="#{songEditBB.song.songName}"
@@ -45,21 +39,29 @@
 					required="true" requiredMessage="podaj url">
 				</p:inputText>
 				<p:message for="p-song_url" display="icon"/>
+				<!-- 
+				<h:outputLabel for="p-band" value="zespół" />
+				<p:inputText id="p-band" value="#{songEditBB.song.band}"
+					validatorMessage="co najwyżej 40 znaków">
+					<f:validateLength maximum="40" />
+				</p:inputText>
+				<p:message for="p-band" display="icon"/>
+				
 				
 				<h:outputLabel for="p-album2" value="id albumu" />
-				<p:inputText id="p-album2" value="#{albumEditBB.album}"
+				<p:inputText id="p-album2" value="#{songEditBB.song.album2}"
 					validatorMessage="co najwyżej 40 znaków">
 					<f:validateLength maximum="40" />
 				</p:inputText>
 				<p:message for="p-album2" display="icon"/>
 				
 				<h:outputLabel for="p-user1" value="dodane przez id" />
-				<p:inputText id="p-user1" value="#{remoteClient.details}"
+				<p:inputText id="p-user1" value="#{songEditBB.song.user1}"
 					validatorMessage="co najwyżej 40 znaków">
 					<f:validateLength maximum="40" />
 				</p:inputText>
 				<p:message for="p-user1" display="icon"/>
-				
+				 -->
 			</h:panelGrid>
 			<p:messages id="msgs" />
 

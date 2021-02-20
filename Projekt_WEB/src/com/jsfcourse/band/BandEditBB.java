@@ -69,7 +69,6 @@ public class BandEditBB implements Serializable {
 		if (loaded == null) {
 			return PAGE_STAY_AT_THE_SAME;
 		}
-
 		try {
 			if (band.getBandId() == null) {
 				// new record

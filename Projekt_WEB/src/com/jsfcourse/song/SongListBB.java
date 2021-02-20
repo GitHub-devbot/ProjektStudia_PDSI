@@ -14,8 +14,12 @@ import javax.faces.context.Flash;
 import javax.servlet.http.HttpSession;
 
 import jsf.projektDAO.songDAO;
+import jsf.projektDAO.albumDAO;
+import jsf.projektDAO.userDAO;
 import jsf.projekt.Song;
 import jsf.projekt.Album;
+import jsf.projekt.Band;
+import jsf.projekt.User;
 
 @Named
 @RequestScoped
@@ -33,6 +37,10 @@ public class SongListBB {
 	
 	@EJB
 	songDAO songDAO;
+	@EJB
+	albumDAO albumDAO;
+	@EJB
+	userDAO userDAO;
 		
 	public String getsongName() {
 		return name;
@@ -62,7 +70,7 @@ public class SongListBB {
 		return list;
 	}
 
-	public String newSong(){
+	public String newSong(Integer uzytkownik, Album albumek){
 		Song song = new Song();
 		
 		//1. Pass object through session
@@ -71,7 +79,9 @@ public class SongListBB {
 		
 		//2. Pass object through flash	
 		flash.put("song", song);
-		
+		song.setAlbum2(albumek);
+		song.setBand(albumek.getBand());
+		song.setUser1(userDAO.find(uzytkownik));
 		return PAGE_SONG_EDIT;
 	}
 

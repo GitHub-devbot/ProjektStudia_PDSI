@@ -32,9 +32,9 @@
 					<f:validateLength maximum="40" />
 				</p:inputText>
 				<p:message for="p-album_name" display="icon"/>
-
+<!--  
 				<h:outputLabel for="user" value="album dodany przez" />
-				<p:inputText id="p-user" value="#{remoteClient.details}"
+				<p:inputText id="p-user" value="#{albumEditBB.album.user}"
 					required="true" requiredMessage="podaj przez kogo dodany album"
 					validatorMessage="co najwyżej 40 znaków">
 					<f:validateLength maximum="40" />
@@ -42,13 +42,13 @@
 				<p:message for="p-user" display="icon"/>
 				
 				<h:outputLabel for="band" value="zespół" />
-				<p:inputText id="p-band" value="#{bandEditBB.band}"
+				<p:inputText id="p-band" value="#{albumEditBB.album.band}"
 					required="true" requiredMessage="jakiego zespołu album"
 					validatorMessage="co najwyżej 40 znaków">
 					<f:validateLength maximum="40" />
 				</p:inputText>
 				<p:message for="p-band" display="icon"/>
-				
+-->				
 
 				
 				
