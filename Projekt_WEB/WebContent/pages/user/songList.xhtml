@@ -61,7 +61,7 @@
 					action="#{songListBB.deleteSong(p)}" update="@form" />
 					
 				<p:commandButton value="Komentuj"
-					action="#{songListBB.commentSong(p)}" />
+					action="#{commentListBB.commentsSong(remoteClient.details.userId,p)}" />
 			</p:column>
 		</p:dataTable>
 		</h:form>

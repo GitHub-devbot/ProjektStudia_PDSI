@@ -18,21 +18,22 @@
 <ui:composition template="/templates/page-template.xhtml">
 
 	<ui:define name="pageContent">
+
 <h:body style="background-color: #eee; margin: 0.5em;">
 
-	<p:panel toggleable="true" header="Edycja rekordu">
+	<p:panel toggleable="true" header="Dodaj komentarz">
 
 		<h:form rendered="#{commentEditBB.comment != null}">
 			<h:panelGrid columns="3" cellpadding="5">
 
 				<h:outputLabel for="p-comment" value="komentarz" />
-				<p:inputText id="p-comment" value="#{commentEditBB.comment.comment}"
+				<p:inputText id="p-comment" value="#{commentEditBB.comment.comment}" style = "width:500px"
 					required="true" requiredMessage="Wpisz komentarz"
 					validatorMessage="co najwyżej 120 znaków">
 					<f:validateLength maximum="120" />
 				</p:inputText>
 				<p:message for="p-comment" display="icon"/>
-<!--  
+<!-- 
 				<h:outputLabel for="p-user1" value="Dodany przez" />
 				<p:inputText id="p-user1" value="#{commentEditBB.comment.user1}"
 					validatorMessage="co najwyżej 40 znaków">
@@ -70,15 +71,56 @@
 				<p:message for="p-song1" display="icon"/>
 				-->
 			</h:panelGrid>
-			<p:messages id="msgs" />
+		<!--  	<p:messages id="msgs" /> -->
 
-			<p:commandButton value="Zapisz" action="#{commentEditBB.saveData()}"
+			<p:commandButton value="Zapisz" action="#{commentEditBB.saveDataSong(remoteClient.details.userId,commentEditBB.comment.song1)}"
 				style="margin-right: 1em;" update="@form" />
-
-			<p:button value="Anuluj" outcome="commentList" />
 		</h:form>
 
 	</p:panel>
+
+</h:body>	
+	
+<h:body style="background-color: #eee; margin: 0.5em;">
+
+<!--	<p:messages /> -->
+
+	<h:form id="form-table" style="margin-bottom:1em;">						
+
+		<p:dataTable value="#{commentListBB.list}" var="p" filterEvent="transitionrun" >
+			
+			<p:column headerText="Komentarz" sortBy="#{p.comment}" filterBy="#{p.comment}">
+				<h:outputText value="#{p.comment}" />
+			</p:column>
+
+			<p:column headerText="Dodany przez" sortBy="#{p.user1.userLogin}" filterBy="#{p.user1.userLogin}">
+				<h:outputText value="#{p.user1.userLogin}" />
+			</p:column>
+			
+			<p:column headerText="Nazwa utworu" sortBy="#{p.song1.songName}" filterBy="#{p.song1.songName}" filterValue="#{commentEditBB.comment.song1.songName}">
+				<h:outputText value="#{p.song1.songName}" />	
+			</p:column>
+			
+			<p:column headerText="Data dodania" sortBy="#{p.postDate}" filterBy="#{p.postDate}">
+				<h:outputText value="#{p.postDate}" />
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="opcje" />
+				</f:facet>
+
+				<p:commandButton value="Edytuj"
+					action="#{commentListBB.editComment(p)}" />
+
+				<p:commandButton value="Usuń"
+					action="#{commentListBB.deleteComment(p)}" update="@form" />					
+
+			</p:column>
+
+		</p:dataTable>
+
+	</h:form>
 
 </h:body>
 </ui:define>

@@ -1,5 +1,7 @@
 package com.jsfcourse.comment;
 
+import java.time.LocalDateTime; 
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,14 +16,20 @@ import javax.faces.context.Flash;
 import javax.servlet.http.HttpSession;
 
 import jsf.projektDAO.commentDAO;
+import jsf.projektDAO.userDAO;
 import jsf.projekt.Comment;
 import jsf.projekt.Band;
+import jsf.projekt.User;
+import jsf.projekt.Album;
+import jsf.projekt.Song;
 
 @Named
 @RequestScoped
 public class CommentListBB {
 	private static final String PAGE_COMMENT_EDIT = "/pages/user/commentEdit?faces-redirect=true";
 	private static final String PAGE_COMMENTS_BAND = "/pages/user/commentsBand?faces-redirect=true";
+	private static final String PAGE_COMMENTS_ALBUM = "/pages/user/commentsAlbum?faces-redirect=true";
+	private static final String PAGE_COMMENTS_SONG = "/pages/user/commentsSong?faces-redirect=true";
 	private static final String PAGE_STAY_AT_THE_SAME = null;
 
 	private String comment;
@@ -35,6 +43,8 @@ public class CommentListBB {
 	
 	@EJB
 	commentDAO commentDAO;
+	@EJB
+	userDAO userDAO;
 	
 	public Integer getcommentId() {
 		return commentId;
@@ -95,12 +105,45 @@ public class CommentListBB {
 		return PAGE_COMMENT_EDIT;
 	}
 	
-	public String commentsBand(Band band){
-	//	if(bandId == comment.getAuthorId() ) {
-		flash.put("band", band);
-	//	}
+	public String commentsBand(Integer uzytkownik, Band band){
+		LocalDateTime date = LocalDateTime.now();
+		DateTimeFormatter date2 = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+		String formattedDate = date.format(date2);
+		
+		Comment comment = new Comment();
+		flash.put("comment", comment);
+		comment.setBand2(band);
+		comment.setUser1(userDAO.find(uzytkownik));
+		comment.setPostDate(formattedDate);
 		return PAGE_COMMENTS_BAND;
 	}
+	
+	public String commentsAlbum(Integer uzytkownik, Album album){
+		LocalDateTime date = LocalDateTime.now();
+		DateTimeFormatter date2 = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+		String formattedDate = date.format(date2);
+		
+		Comment comment = new Comment();
+		flash.put("comment", comment);
+		comment.setAlbum2(album);
+		comment.setUser1(userDAO.find(uzytkownik));
+		comment.setPostDate(formattedDate);
+		return PAGE_COMMENTS_ALBUM;
+	}
+	
+	public String commentsSong(Integer uzytkownik, Song song){
+		LocalDateTime date = LocalDateTime.now();
+		DateTimeFormatter date2 = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+		String formattedDate = date.format(date2);
+		
+		Comment comment = new Comment();
+		flash.put("comment", comment);
+		comment.setSong1(song);
+		comment.setUser1(userDAO.find(uzytkownik));
+		comment.setPostDate(formattedDate);
+		return PAGE_COMMENTS_SONG;
+	}
+	
 
 	public String deleteComment(Comment comment){
 		commentDAO.remove(comment);

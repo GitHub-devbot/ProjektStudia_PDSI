@@ -6,6 +6,10 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
+<f:metadata>
+    <f:viewAction action="#{commentEditBB.onLoad()}" />
+</f:metadata>
+
 <h:head>
 	<meta charset="utf-8"/>
 	<title>Projekt - PDSI</title>
@@ -14,61 +18,91 @@
 <ui:composition template="/templates/page-template.xhtml">
 
 	<ui:define name="pageContent">
+
 <h:body style="background-color: #eee; margin: 0.5em;">
 
-<h:form id="button" style="margin-bottom:0em;">
-		<p:commandButton value="Dodaj nowy komentarz"
-			action="#{commentListBB.newComment()}" style="margin-bottom:0em;"/>
-			</h:form>
+	<p:panel toggleable="true" header="Dodaj komentarz">
 
-	<p:panel header="Opcje wyszukiwania" toggleable="true" collapsed="true"
-		style="margin-bottom: 1em;">
-		<h:form>
-			<h:panelGrid columns="2" cellpadding="5">
-				<h:outputLabel value="id zespołu:" />
-				<p:inputText value="#{commentListBB.comment}" />
-				<p:commandButton value="Szukaj" update="form-table" />
+		<h:form rendered="#{commentEditBB.comment != null}">
+			<h:panelGrid columns="3" cellpadding="5">
+
+				<h:outputLabel for="p-comment" value="komentarz" />
+				<p:inputText id="p-comment" value="#{commentEditBB.comment.comment}" style = "width:500px"
+					required="true" requiredMessage="Wpisz komentarz"
+					validatorMessage="co najwyżej 120 znaków">
+					<f:validateLength maximum="120" />
+				</p:inputText>
+				<p:message for="p-comment" display="icon"/>
+<!-- 
+				<h:outputLabel for="p-user1" value="Dodany przez" />
+				<p:inputText id="p-user1" value="#{commentEditBB.comment.user1}"
+					validatorMessage="co najwyżej 40 znaków">
+					<f:validateLength maximum="40" />
+				</p:inputText>
+				<p:message for="p-user1" display="icon"/>
+
+				<h:outputLabel for="p-post_date" value="Data dodania" />
+				<p:inputText id="p-post_date" value="#{commentEditBB.comment.postDate}"
+					required="true" requiredMessage="Podaj date dodania"
+					validatorMessage="co najwyżej 40 znaków">
+					<f:validateLength maximum="40" />
+				</p:inputText>
+				<p:message for="p-post_date" display="icon"/>
+				
+				<h:outputLabel for="p-album2" value="Id albumu" />
+				<p:inputText id="p-album2" value="#{commentEditBB.comment.album2}"
+					validatorMessage="co najwyżej 40 znaków">
+					<f:validateLength maximum="40" />
+				</p:inputText>
+				<p:message for="p-album2" display="icon"/>
+				
+				<h:outputLabel for="p-band2" value="Id autora" />
+				<p:inputText id="p-band2" value="#{commentEditBB.comment.band2}"
+					validatorMessage="co najwyżej 40 znaków">
+					<f:validateLength maximum="40" />
+				</p:inputText>
+				<p:message for="p-band2" display="icon"/>
+				
+				<h:outputLabel for="p-song1" value="Id utworu" />
+				<p:inputText id="p-song1" value="#{commentEditBB.comment.song1}"
+					validatorMessage="co najwyżej 40 znaków">
+					<f:validateLength maximum="40" />
+				</p:inputText>
+				<p:message for="p-song1" display="icon"/>
+				-->
 			</h:panelGrid>
+		<!--  	<p:messages id="msgs" /> -->
+
+			<p:commandButton value="Zapisz" action="#{commentEditBB.saveDataBand(remoteClient.details.userId,commentEditBB.comment.band2)}"
+				style="margin-right: 1em;" update="@form" />
 		</h:form>
+
 	</p:panel>
 
-	<p:messages />
+</h:body>	
+	
+<h:body style="background-color: #eee; margin: 0.5em;">
 
-	<h:form id="form-table" style="margin-bottom:1em;">
+<!--	<p:messages /> -->
 
-		<p:commandButton value="Dodaj nową osobę"
-			action="#{userListBB.newUser()}" style="margin-bottom:1em;"/>
-		
-		<p:commandButton value="Dodaj nowy utwór"
-			action="#{songListBB.newSong()}" style="margin-bottom:1em;"/>	
-			
-		<p:commandButton value="Dodaj nowy album"
-			action="#{albumListBB.newAlbum()}" style="margin-bottom:1em;"/>		
-				
-		<p:commandButton value="Dodaj nowy komentarz"
-			action="#{commentListBB.newComment()}" style="margin-bottom:1em;"/>	
-			
-		<p:commandButton value="Dodaj nowy zespół"
-			action="#{bandListBB.newBand()}" style="margin-bottom:1em;"/>							
+	<h:form id="form-table" style="margin-bottom:1em;">						
 
-		<p:dataTable value="#{commentListBB.list}" var="p" filterEvent="" >
+		<p:dataTable value="#{commentListBB.list}" var="p" filterEvent="transitionrun" >
 			
-			<p:column headerText="Komentarz" sortBy="#{p.comment}" >
+			<p:column headerText="Komentarz" sortBy="#{p.comment}" filterBy="#{p.comment}">
 				<h:outputText value="#{p.comment}" />
 			</p:column>
 
-			<p:column headerText="Dodany przez" sortBy="#{p.user1}" >
-				<h:outputText value="#{p.user1}" />
+			<p:column headerText="Dodany przez" sortBy="#{p.user1.userLogin}" filterBy="#{p.user1.userLogin}">
+				<h:outputText value="#{p.user1.userLogin}" />
 			</p:column>
 			
-			<p:column headerText="Data dodania" sortBy="#{p.postDate}" >
-				<h:outputText value="#{p.postDate}" />
+			<p:column headerText="Nazwa zespołu" sortBy="#{p.band2.bandName}" filterBy="#{p.band2.bandName}" filterValue="#{commentEditBB.comment.band2.bandName}">
+				<h:outputText value="#{p.band2.bandName}" />	
 			</p:column>
-
-			<p:column headerText="Id zespołu" sortBy="#{p.band2}" filterBy="#{p.band2}" filterValue="1"  >
-			<p:autoUpdate  />
-				<h:outputText value="#{p.band2}" />
-				
+			
+			<p:column headerText="Data dodania" sortBy="#{p.postDate}" filterBy="#{p.postDate}">
+				<h:outputText value="#{p.postDate}" />
 			</p:column>
 
 			<p:column>
@@ -85,9 +119,7 @@
 			</p:column>
 
 		</p:dataTable>
-		
-		<p:dataTable value="#{commentListBB.list}" var="p" filterEvent="" >
-		</p:dataTable>
+
 	</h:form>
 
 </h:body>

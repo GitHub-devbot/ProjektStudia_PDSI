@@ -39,10 +39,8 @@ public class BandEditBB implements Serializable {
 	public Band getBand() {
 		return band;
 	}
-
 	
 	public void onLoad() throws IOException {
-
 		// 1. load person passed through session
 		// HttpSession session = (HttpSession) context.getExternalContext().getSession(true);
 		// loaded = (Person) session.getAttribute("person");

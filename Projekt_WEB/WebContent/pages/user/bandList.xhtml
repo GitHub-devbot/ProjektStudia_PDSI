@@ -53,7 +53,7 @@
 					action="#{albumListBB.newAlbum(remoteClient.details.userId, p)}" />		
 					
 		  		<p:commandButton value="Komentarze"
-					action="#{commentListBB.commentsBand(p)}" />
+					action="#{commentListBB.commentsBand(remoteClient.details.userId,p)}" />
 					
 					
 			</p:column>
