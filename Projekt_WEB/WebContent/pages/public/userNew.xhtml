@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:metadata>
+    <f:viewAction action="#{userEditBB.onLoad()}" />
+</f:metadata>
+
+<h:head>
+	<meta charset="utf-8"/>
+	<title>Projekt - PDSI</title>
+</h:head>
+
+<style type="text/css">
+body {
+    background-image: url(http://localhost:8080/Projekt_WEB/assets/tran.png);
+    background-size: cover;
+    background-repeat: no-repeat; 
+    background-attachment:fixed;
+
+}
+</style>
+
+<h:body style="background-color: #eee; margin: 0.5em;">
+
+	<p:panel toggleable="true" header="Rejestracja">
+
+		<h:form rendered="#{userEditBB.user != null}">
+			<h:panelGrid columns="3" cellpadding="5">
+
+				<h:outputLabel for="p-user_login" value="login" />
+				<p:inputText id="p-user_login" value="#{userEditBB.user.userLogin}"
+					required="true" requiredMessage="Podaj login"
+					validatorMessage="co najwyżej 40 znaków">
+					<f:validateLength maximum="40" />
+				</p:inputText>
+				<p:message for="p-user_login" display="icon"/>
+
+				<h:outputLabel for="p-user_password" value="hasło" />
+				<p:inputText id="p-user_password" value="#{userEditBB.user.userPassword}"
+					required="true" requiredMessage="podaj hasło"
+					validatorMessage="co najwyżej 40 znaków">
+					<f:validateLength maximum="40" />
+				</p:inputText>
+				<p:message for="p-user_password" display="icon"/>
+
+				<h:outputLabel for="p-user_role" value="rola" />
+				<p:inputText id="p-user_role" value="#{userEditBB.user.userRole}"
+					required="true" requiredMessage="podaj role"
+					validatorMessage="co najwyżej 40 znaków">
+					<f:validateLength maximum="40" />
+				</p:inputText>
+				<p:message for="p-user_role" display="icon"/>
+
+			</h:panelGrid>
+			<p:messages id="msgs" />
+
+			<p:commandButton value="Zarejestruj" action="#{userEditBB.saveData()}" style="margin-right: 1em;" update="@form" />
+			
+			<p:button value="Anuluj" outcome="login" />
+		</h:form>
+
+	</p:panel>
+
+</h:body>
+
+</html>

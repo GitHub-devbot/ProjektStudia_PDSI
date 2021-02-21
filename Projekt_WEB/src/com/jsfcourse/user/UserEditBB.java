@@ -62,6 +62,7 @@ public class UserEditBB implements Serializable {
 	}
 
 	public String saveData() {
+		
 		// no Person object passed
 		if (loaded == null) {
 			return PAGE_STAY_AT_THE_SAME;
@@ -81,7 +82,7 @@ public class UserEditBB implements Serializable {
 					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Wystapil blad podczas zapisu", null));
 			return PAGE_STAY_AT_THE_SAME;
 		}
-
+		
 		return PAGE_PERSON_LIST;
 	}
 	

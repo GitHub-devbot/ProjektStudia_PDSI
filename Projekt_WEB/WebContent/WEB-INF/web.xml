@@ -33,6 +33,7 @@
 /pages/public : PUBLIC, user, admin;
 /pages/admin : admin;
 /pages/user : user, admin;
+
 			</param-value>
 		</init-param>
 		<init-param>

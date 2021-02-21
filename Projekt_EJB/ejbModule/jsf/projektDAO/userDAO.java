@@ -32,6 +32,7 @@ public User find(Object id) {
 	return em.find(User.class, id);
 }
 
+
 public List<User> getFullList() {
 	List<User> list = null;
 
@@ -88,16 +89,20 @@ public List<User> getList(Map<String, Object> searchParams) {
 	return list;
 }
 public User getUser(String login,String pass) {
-	User user = new User();
-
-	if(login.equals("loginator")&&pass.equals("haslo")) {
-		user = find(11);	
+	User user;
+	for(int i=0;i<100; i++) {
+	user = find(i);
+	if(user!=null) {
+	if(login.equals(user.getUserLogin()) && pass.equals(user.getUserPassword()) ) {
+	return user;		
 	}
-	if(login.equals("grzesiu")&&pass.equals("haha")) {
-		user = find(12);	
 	}
-
-	return user;
+	}
+	
+	user = new User();
+	user.setUserRole("null");
+	return user;	
+	
 }
 
 }

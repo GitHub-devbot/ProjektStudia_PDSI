@@ -96,6 +96,9 @@ public class LoginBB {
 		// - new session will be created (with new ID)
 		session.invalidate();
 		return PAGE_LOGIN;
-	}
+	}	
 	
 }
+
+
+
