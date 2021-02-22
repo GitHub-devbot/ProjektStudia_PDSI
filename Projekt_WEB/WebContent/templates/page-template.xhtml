@@ -8,10 +8,10 @@
 
 <ui:composition template="/templates/main-template.xhtml">
 
-	<ui:define name="title">
-		<h:graphicImage url="/assets/Musicurious.JPG"/> <h:outputText value = "usiCurious" style = "font-size: 35px; color:deeppink;"> </h:outputText>
+	<ui:define name="title">	
+	<ui:insert name="title">MusiCurious</ui:insert>
+	
 	</ui:define>
-
 	<ui:define name="content">
 
 		<p:panel header="Witaj #{remoteClient.details.userLogin}, Twoja rola to #{remoteClient.details.userRole}" styleClass="bottom-space">Musicurious to największy konkurent Spotify! Miłej zabawy!</p:panel>
