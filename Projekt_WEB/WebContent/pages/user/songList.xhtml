@@ -17,7 +17,7 @@
 
 <h:body style="background-color: #eee; margin: 0.5em;">
 
-	<p:messages />
+	<p:messages id = "msg"/>
 
 	<h:form id="form-table" style="margin-bottom:1em;">
 
@@ -55,12 +55,12 @@
 				</f:facet>
 
 				<p:commandButton value="Edytuj"
-					action="#{songListBB.editSong(p)}" />
+					action="#{songListBB.editSong(remoteClient.details.userId,p)}" update="msg"/>
 
 				<p:commandButton value="Usuń"
-					action="#{songListBB.deleteSong(p)}" update="@form" />
+					action="#{songListBB.deleteSong(remoteClient.details.userId,p)}" update="@form msg"/>
 					
-				<p:commandButton value="Komentuj"
+				<p:commandButton value="Komentarze"
 					action="#{commentListBB.commentsSong(remoteClient.details.userId,p)}" />
 			</p:column>
 		</p:dataTable>

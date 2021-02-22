@@ -89,7 +89,7 @@ public List<User> getList(Map<String, Object> searchParams) {
 	return list;
 }
 public User getUser(String login,String pass) {
-	User user;
+	User user = new User();
 	for(int i=0;i<100; i++) {
 	user = find(i);
 	if(user!=null) {

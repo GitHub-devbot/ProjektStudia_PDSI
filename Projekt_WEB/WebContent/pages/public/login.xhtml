@@ -30,6 +30,7 @@ body {
 	<p:panel toggleable="true" header="Logowanie">
 
 		<h:form>
+	
 			<h:panelGrid columns="2" cellpadding="5" header="Logowanie">
 				<h:outputLabel for="login" value="login:" />
 				<h:inputText id="login" value="#{loginBB.login}"				
@@ -41,12 +42,9 @@ body {
 				
 			</h:panelGrid>
 		
-			<h:messages />
-		
-			<p:commandButton value="Zaloguj" action="#{loginBB.doLogin()}"/>
-			<p:commandButton value="Zarejestruj się" action="#{UserListBB.newUser()}"/>
-			
-			
+			<h:messages id = "msg"/>
+		 	<p:commandButton value="Zaloguj" action="#{loginBB.doLogin()}" update="msg" /> 
+			<p:commandButton value="Zarejestruj się" action="#{userListBB.newUser()}"/>			
 
 		</h:form>
 

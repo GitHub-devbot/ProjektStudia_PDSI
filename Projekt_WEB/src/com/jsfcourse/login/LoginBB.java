@@ -62,7 +62,7 @@ public class LoginBB {
 		// 2. if bad login or password - stay with error info
 		if (user == null) {
 			ctx.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
-					"Niepoprawny login lub has≈Ço", null));
+					"Niepoprawny login lub has≥o", null));
 			return PAGE_STAY_AT_THE_SAME;
 		}
 
@@ -96,7 +96,7 @@ public class LoginBB {
 		// - new session will be created (with new ID)
 		session.invalidate();
 		return PAGE_LOGIN;
-	}	
+	}		
 	
 }
 

@@ -20,7 +20,7 @@
 			action="#{bandListBB.newBand(remoteClient.details.userId)}" style="margin-bottom:0em;"/>
 			</h:form>
 			
-	<p:messages />
+	<p:messages id = "msg"/>
 
 	<h:form id="form-table" style="margin-bottom:1em;">
 
@@ -44,10 +44,10 @@
 				</f:facet>
 
 				<p:commandButton value="Edytuj"
-					action="#{bandListBB.editBand(p)}" />
+					action="#{bandListBB.editBand(remoteClient.details.userId,p)}" update="msg"/>
 
 				<p:commandButton value="Usuń"
-					action="#{bandListBB.deleteBand(p)}" update="@form" />				
+					action="#{bandListBB.deleteBand(remoteClient.details.userId,p)}" update="@form msg" />				
 					
 				<p:commandButton value="Dodaj Album"
 					action="#{albumListBB.newAlbum(remoteClient.details.userId, p)}" />		

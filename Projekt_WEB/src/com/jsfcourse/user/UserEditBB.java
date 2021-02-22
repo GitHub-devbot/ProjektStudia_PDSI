@@ -52,7 +52,7 @@ public class UserEditBB implements Serializable {
 			user = loaded;
 			// session.removeAttribute("person");
 		} else {
-			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Bledne uzycie systemu", null));
+		//	context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Bledne uzycie systemu", null));
 			// if (!context.isPostback()) { //possible redirect
 			// context.getExternalContext().redirect("personList.xhtml");
 			// context.responseComplete();

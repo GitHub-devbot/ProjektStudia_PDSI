@@ -10,6 +10,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.context.Flash;
@@ -94,15 +95,29 @@ public class CommentListBB {
 		return PAGE_COMMENT_EDIT;
 	}
 
-	public String editComment(Comment comment){
-		//1. Pass object through session
-		//HttpSession session = (HttpSession) extcontext.getSession(true);
-		//session.setAttribute("person", person);
-		
-		//2. Pass object through flash 
-		flash.put("comment", comment);
-		
+	public String editComment(Integer uzytkownik, Comment comment){
+		if(comment.getUser1().getUserId().toString().equals(uzytkownik.toString()) || userDAO.find(uzytkownik).getUserRole().equals("admin")) {		
+		flash.put("comment", comment);		
 		return PAGE_COMMENT_EDIT;
+		}else {
+			FacesContext ctx = FacesContext.getCurrentInstance();
+			ctx.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+					"Nie masz wystarczaj¹cych uprawnieñ", null));
+		return PAGE_STAY_AT_THE_SAME;
+	}
+	}
+	
+	public String deleteComment(Integer uzytkownik, Comment comment){
+		if(comment.getUser1().getUserId().toString().equals(uzytkownik.toString()) || userDAO.find(uzytkownik).getUserRole().equals("admin")) {
+		commentDAO.remove(comment);
+		return PAGE_STAY_AT_THE_SAME;
+		}else {
+			FacesContext ctx = FacesContext.getCurrentInstance();
+			ctx.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+					"Nie masz wystarczaj¹cych uprawnieñ", null));
+		return PAGE_STAY_AT_THE_SAME;
+	}
+		
 	}
 	
 	public String commentsBand(Integer uzytkownik, Band band){
@@ -144,9 +159,4 @@ public class CommentListBB {
 		return PAGE_COMMENTS_SONG;
 	}
 	
-
-	public String deleteComment(Comment comment){
-		commentDAO.remove(comment);
-		return PAGE_STAY_AT_THE_SAME;
-	}
 }

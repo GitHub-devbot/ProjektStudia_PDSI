@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.context.Flash;
@@ -69,28 +70,36 @@ public class BandListBB {
 	public String newBand(Integer uzytkownik){
 		Band band = new Band();
 
-		//1. Pass object through session
-		//HttpSession session = (HttpSession) extcontext.getSession(true);
-		//session.setAttribute("person", person);
-		//2. Pass object through flash	
 		flash.put("band", band);
 		band.setUser(userDAO.find(uzytkownik));
 		return PAGE_BAND_EDIT;
 	}
 
-	public String editBand(Band band){
-		//1. Pass object through session
-		//HttpSession session = (HttpSession) extcontext.getSession(true);
-		//session.setAttribute("person", person);
+	public String editBand(Integer uzytkownik, Band band){
+		if(band.getUser().getUserId().toString().equals(uzytkownik.toString())|| userDAO.find(uzytkownik).getUserRole().equals("admin")) {
+			flash.put("band", band);	
+	//		band.setBandName(band.getUser().getUserId().toString());
+	//		band.setBandName(uzytkownik.toString());
+			return PAGE_BAND_EDIT;				
+		}else {
+			FacesContext ctx = FacesContext.getCurrentInstance();
+			ctx.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+					"Nie masz wystarczaj¹cych uprawnieñ", null));
+			return PAGE_STAY_AT_THE_SAME;		
+		}
 		
-		//2. Pass object through flash 
-		flash.put("band", band);
-		
-		return PAGE_BAND_EDIT;
 	}
 
-	public String deleteBand(Band band){
-		bandDAO.remove(band);
-		return PAGE_STAY_AT_THE_SAME;
+	public String deleteBand(Integer uzytkownik, Band band){
+		if(band.getUser().getUserId().toString().equals(uzytkownik.toString())|| userDAO.find(uzytkownik).getUserRole().equals("admin")) {
+			bandDAO.remove(band);
+			return PAGE_STAY_AT_THE_SAME;	
+		}else {
+			FacesContext ctx = FacesContext.getCurrentInstance();
+			ctx.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+					"Nie masz wystarczaj¹cych uprawnieñ", null));
+			return PAGE_STAY_AT_THE_SAME;		
+		}
+			
 	}
 }

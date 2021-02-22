@@ -83,7 +83,7 @@
 	
 <h:body style="background-color: #eee; margin: 0.5em;">
 
-<!--	<p:messages /> -->
+	<p:messages id = "msg"/> 
 
 	<h:form id="form-table" style="margin-bottom:1em;">						
 
@@ -111,10 +111,10 @@
 				</f:facet>
 
 				<p:commandButton value="Edytuj"
-					action="#{commentListBB.editComment(p)}" />
+					action="#{commentListBB.editComment(p)}" update="msg"/>
 
 				<p:commandButton value="Usuń"
-					action="#{commentListBB.deleteComment(p)}" update="@form" />					
+					action="#{commentListBB.deleteComment(p)}" update="@form msg" />					
 
 			</p:column>
 
