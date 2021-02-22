@@ -100,7 +100,7 @@ public User getUser(String login,String pass) {
 	}
 	
 	user = new User();
-	user.setUserRole("null");
+//	user.setUserRole("null");
 	return user;	
 	
 }

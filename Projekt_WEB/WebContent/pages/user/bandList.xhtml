@@ -24,7 +24,9 @@
 
 	<h:form id="form-table" style="margin-bottom:1em;">
 
-		<p:dataTable value="#{bandListBB.list}" var="p">
+		<p:dataTable value="#{bandListBB.list}" var="p" paginator="true" rows="10"
+            paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+            rowsPerPageTemplate="5,10,15">
 
 			<p:column headerText="Nazwa zespołu" sortBy="#{p.bandName}" filterBy="#{p.bandName}">
 				<h:outputText value="#{p.bandName}" />

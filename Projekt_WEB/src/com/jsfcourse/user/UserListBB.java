@@ -20,6 +20,7 @@ import jsf.projekt.User;
 @RequestScoped
 public class UserListBB {
 	private static final String PAGE_USER_EDIT = "/pages/user/userEdit?faces-redirect=true";
+	private static final String PAGE_USER_REGISTER = "/pages/public/userNew?faces-redirect=true";	
 	private static final String PAGE_STAY_AT_THE_SAME = null;
 
 	private String login;
@@ -72,6 +73,19 @@ public class UserListBB {
 		flash.put("user", user);
 		user.setUserRole("user");
 		return PAGE_USER_EDIT;
+	}
+	
+	public String newUserRegister(){
+		User user = new User();
+		
+		//1. Pass object through session
+		//HttpSession session = (HttpSession) extcontext.getSession(true);
+		//session.setAttribute("person", person);
+
+		//2. Pass object through flash	
+		flash.put("user", user);
+		user.setUserRole("user");
+		return PAGE_USER_REGISTER;
 	}
 
 	public String editUser(User user){

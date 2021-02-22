@@ -43,11 +43,15 @@ body {
 			</h:panelGrid>
 		
 			<h:messages id = "msg"/>
-		 	<p:commandButton value="Zaloguj" action="#{loginBB.doLogin()}" update="msg" /> 
-			<p:commandButton value="Zarejestruj się" action="#{userListBB.newUser()}"/>			
+		 	<p:commandButton value="Zaloguj" style="width:200px" action="#{loginBB.doLogin()}" update="msg" /> 
+			
 
 		</h:form>
-
+	<h:form>	
+<h:outputLabel value="-------------------LUB-------------------" />
+<div></div>
+<p:commandButton value="Zarejestruj się" style="width:200px" action="#{userListBB.newUserRegister()}"/>			
+</h:form>
 	</p:panel>
 
 </h:body>

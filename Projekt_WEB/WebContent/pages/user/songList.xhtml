@@ -21,7 +21,9 @@
 
 	<h:form id="form-table" style="margin-bottom:1em;">
 
-		<p:dataTable value="#{songListBB.list}" var="p">
+		<p:dataTable value="#{songListBB.list}" var="p" paginator="true" rows="10"
+            paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+            rowsPerPageTemplate="5,10,15">
 
 			<p:column headerText="Nazwa utworu" sortBy="#{p.songName}" filterBy="#{p.songName}">
 				<h:outputText value="#{p.songName}" />

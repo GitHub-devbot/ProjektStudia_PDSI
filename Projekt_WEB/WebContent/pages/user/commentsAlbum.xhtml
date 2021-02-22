@@ -87,7 +87,9 @@
 
 	<h:form id="form-table" style="margin-bottom:1em;">						
 
-		<p:dataTable value="#{commentListBB.list}" var="p" filterEvent="transitionrun" >
+		<p:dataTable value="#{commentListBB.list}" var="p" filterEvent="transitionrun" paginator="true" rows="10"
+            paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+            rowsPerPageTemplate="5,10,15" >
 			
 			<p:column headerText="Komentarz" sortBy="#{p.comment}" filterBy="#{p.comment}">
 				<h:outputText value="#{p.comment}" />

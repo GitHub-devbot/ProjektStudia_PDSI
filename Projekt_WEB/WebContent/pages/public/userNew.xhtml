@@ -47,7 +47,7 @@ body {
 					<f:validateLength maximum="40" />
 				</p:inputText>
 				<p:message for="p-user_password" display="icon"/>
-
+<!--
 				<h:outputLabel for="p-user_role" value="rola" />
 				<p:inputText id="p-user_role" value="#{userEditBB.user.userRole}"
 					required="true" requiredMessage="podaj role"
@@ -55,11 +55,11 @@ body {
 					<f:validateLength maximum="40" />
 				</p:inputText>
 				<p:message for="p-user_role" display="icon"/>
-
+-->
 			</h:panelGrid>
 			<p:messages id="msgs" />
 
-			<p:commandButton value="Zarejestruj" action="#{userEditBB.saveData()}" style="margin-right: 1em;" update="@form" />
+			<p:commandButton value="Zarejestruj" action="#{userEditBB.saveData()}" style="margin-right: 1em;" />
 			
 			<p:button value="Anuluj" outcome="login" />
 		</h:form>

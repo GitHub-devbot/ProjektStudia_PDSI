@@ -60,7 +60,7 @@ public class LoginBB {
 		User user = userDAO.getUser(login,pass);
 
 		// 2. if bad login or password - stay with error info
-		if (user == null) {
+		if (user.getUserRole() == null) {
 			ctx.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
 					"Niepoprawny login lub has³o", null));
 			return PAGE_STAY_AT_THE_SAME;

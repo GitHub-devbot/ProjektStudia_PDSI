@@ -17,16 +17,16 @@
 		<p:panel header="Witaj #{remoteClient.details.userLogin}, Twoja rola to #{remoteClient.details.userRole}" styleClass="bottom-space">Musicurious to największy konkurent Spotify! Miłej zabawy!</p:panel>
 
 <h:form id="buttons" style="margin-bottom:0em;">
-		<p:button value="Lista użytkowników" outcome="/pages/admin/userList" />	
-		<p:button value="Lista zespołów" outcome="/pages/user/bandList" />	
-		<p:button value="Lista albumów" outcome="/pages/user/albumList" />		
-		<p:button value="Lista utworów" outcome="/pages/user/songList" />						
-		<p:button value="Lista wszystkich komentarzy" outcome="/pages/user/commentList" />	
+		<p:button value="Lista użytkowników" outcome="/pages/admin/userList" style="width:309px"/>	
+		<p:button value="Lista zespołów" outcome="/pages/user/bandList" style="width:309px"/>	
+		<p:button value="Lista albumów" outcome="/pages/user/albumList" style="width:309px"/>		
+		<p:button value="Lista utworów" outcome="/pages/user/songList" style="width:309px"/>						
+		<p:button value="Lista wszystkich komentarzy" outcome="/pages/user/commentList" style="width:309px"/>	
 			
 	
 			
 		<p:commandButton value="Wyloguj"
-			action="#{loginBB.doLogout()}" style="margin-bottom:0.5em;"/>				
+			action="#{loginBB.doLogout()}" style="width:309px"/>				
 </h:form>
 
 		<ui:insert name="pageContent"></ui:insert>

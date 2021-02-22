@@ -20,7 +20,9 @@
 
 	<h:form id="form-table" style="margin-bottom:1em;">				
 
-		<p:dataTable value="#{commentListBB.list}" var="p">
+		<p:dataTable value="#{commentListBB.list}" var="p" paginator="true" rows="10"
+            paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+            rowsPerPageTemplate="5,10,15">
 
 			<p:column headerText="Komentarz" sortBy="#{p.comment}" filterBy="#{p.comment}">
 				<h:outputText value="#{p.comment}" />
@@ -46,7 +48,7 @@
 				<h:outputText value="#{p.postDate}" />
 			</p:column>
 			
-			<p:column>
+			<p:column style="width:400px">
 				<f:facet name="header">
 					<h:outputText value="opcje" />
 				</f:facet>
