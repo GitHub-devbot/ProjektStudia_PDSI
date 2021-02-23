@@ -19,7 +19,7 @@ import jsf.projekt.User;
 @Named
 @RequestScoped
 public class UserListBB {
-	private static final String PAGE_USER_EDIT = "/pages/user/userEdit?faces-redirect=true";
+	private static final String PAGE_USER_EDIT = "/pages/admin/userEdit?faces-redirect=true";
 	private static final String PAGE_USER_REGISTER = "/pages/public/userNew?faces-redirect=true";	
 	private static final String PAGE_STAY_AT_THE_SAME = null;
 
