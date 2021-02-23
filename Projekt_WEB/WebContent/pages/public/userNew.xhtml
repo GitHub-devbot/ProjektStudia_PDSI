@@ -57,9 +57,9 @@ body {
 				<p:message for="p-user_role" display="icon"/>
 -->
 			</h:panelGrid>
-			<p:messages id="msgs" />
+			<p:messages id="msg" />
 
-			<p:commandButton value="Zarejestruj" action="#{userEditBB.saveData()}" style="margin-right: 1em;" />
+			<p:commandButton value="Zarejestruj" action="#{userEditBB.saveDataNew(userEditBB.user.userLogin)}" style="margin-right: 1em;" update="msg"/>
 			
 			<p:button value="Anuluj" outcome="login" />
 		</h:form>

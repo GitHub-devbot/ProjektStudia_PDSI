@@ -86,6 +86,43 @@ public class UserEditBB implements Serializable {
 		return PAGE_PERSON_LIST;
 	}
 	
+	public String saveDataNew(String login) {		
+		User user2 = new User();
+		for(int i=0;i<100; i++) {
+		user2 = userDAO.find(i);
+		if(user2!=null) {
+		if(login.equals(user2.getUserLogin()) ) {
+			FacesContext ctx = FacesContext.getCurrentInstance();
+			ctx.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+					"U¿ytkownik z takim loginem ju¿ istnieje", null));
+			return PAGE_STAY_AT_THE_SAME;		
+		}
+		}
+		}
+		
+		// no Person object passed
+		if (loaded == null) {
+			return PAGE_STAY_AT_THE_SAME;
+		}
+
+		try {
+			if (user.getUserId() == null) {
+				// new record
+				userDAO.create(user);
+			} else {
+				// existing record
+				userDAO.merge(user);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			context.addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Wystapil blad podczas zapisu", null));
+			return PAGE_STAY_AT_THE_SAME;
+		}
+		
+		return PAGE_PERSON_LIST;
+	}	
+	
 	
 	public String returnto() {
 		return PAGE_PERSON_LIST;	
